@@ -1,3 +1,8 @@
+:root{
+    --header-height: 85px;
+    --heading-font-size: 20px;
+}
+
 html{
   overflow: hidden;
 }
@@ -11,12 +16,13 @@ html{
 
 .App-header {
   background-color: #222;
-  height: 3%;
+  height: var(--header-height);
   color: white;
+    padding: 5px;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: var(--header-height);
 }
 
 .App-intro {
@@ -25,11 +31,34 @@ html{
 
 .App-footer {
   background-color: #222;
-  height: 2%;
+  padding:10px;
+  height: 3%;
   color: white;
   position:absolute;
   bottom:0;
   width: 100%;
+    text-align: center;
+}
+
+a{
+  color: white;
+}
+
+.inline{
+    display: inline;
+}
+
+header  .v-center{
+    align-content: center;
+    position: relative;
+    bottom: 30px;
+    left: 2%;
+}
+
+header .b-center{
+    position: relative;
+    bottom: 65px;
+    float:right;
 }
 
 

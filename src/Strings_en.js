@@ -3,6 +3,9 @@ export const FOOTER_CREDIT = "mewc 2018";
 export const COUNCIL_FULL_NAME = "City of Greater Bendigo";
 
 export const DATA_NAME_FOOTPATH = "Asset - Footpath";
+export const DATA_NAME_ROADS = "Asset - Roads";
+export const DATA_NAME_TREES = "Asset - Trees";
+export const DATA_NAME_DEFAULT = "Asset";
 
 //URLS
 export const REST_BENDIGO_ASSETS_FOOTPATHS = "https://data.gov.au/geoserver/city-of-greater-bendigo-assets-footpath/wfs?request=GetFeature&typeName=ckan_1a478d6e_fddd_4d00_a61a_c2d196562db0&outputFormat=json";
