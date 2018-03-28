@@ -23,7 +23,6 @@ class App extends Component {
         {/*TODO GENERATE MAP PROPERLY*/}
 
         <Map />
-
           <footer className="App-footer">
               <MTP muiTheme={getMuiTheme(darkBaseTheme)}>
                 <RaisedLinkButton label={ Strings_en.FOOTER_CREDIT } link={ Strings_en.FOOTER_CREDIT_LINK } />

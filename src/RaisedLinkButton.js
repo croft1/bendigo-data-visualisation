@@ -1,8 +1,6 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import * as Strings_en      from './Strings_en';
-
 export default class RaisedLinkButton extends React.Component{
 
 
