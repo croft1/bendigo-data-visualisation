@@ -22,7 +22,7 @@ export default class DrawerUndocked extends React.Component{
     render(){
         return(
             <div>
-                <RaisedButton secondary={true} className=" b-center" label="Choose Data Set"
+                <RaisedButton primary={true} className=" b-center" label="Choose Data Set"
                               onClick={this.handleToggle} />
                 <Drawer
                     docked={false}
