@@ -6,10 +6,6 @@ import {withScriptjs, withGoogleMap, GoogleMap, Marker} from 'react-google-maps'
 class Map extends Component {
 
 
-    constructor(props){
-        super(props);
-    }
-
     componentDidMount(){
 
     }

@@ -17,9 +17,10 @@ class App extends Component {
               <AppBar/>
           </MTP>
         <Map
+            isMarkerShown
           googleMapURL= "https://maps.googleapis.com/maps/api/js?key=AIzaSyDEHhw8Prc-TJfTeEFHfuNGw7eEMYGm-6Y"
           loadingElement= {<div style={{height: '100%'}} />}
-          containerElement= {<div style={{height: '500px'}} />}
+          containerElement= {<div style={{height: '100vh'}} />}
           mapElement= {<div style={{height: '100%'}} />}
           />
 
