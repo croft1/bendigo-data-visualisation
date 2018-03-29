@@ -34,6 +34,7 @@ export default class DrawerUndocked extends React.Component{
                     <MenuItem leftIcon={<MapLayerIcon/>} onClick={this.handleClose}>{Strings_en.DATA_NAME_ROADS}</MenuItem>
                     <MenuItem leftIcon={<MapLayerIcon/>} onClick={this.handleClose}>{Strings_en.DATA_NAME_FOOTPATH}</MenuItem>
                     <MenuItem leftIcon={<MapLayerIcon/>} onClick={this.handleClose}>{Strings_en.DATA_NAME_TREES}</MenuItem>
+                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={this.handleClose}>{Strings_en.DATA_NAME_BBQ}</MenuItem>
                     <Divider />
                     <DialogMenuItem/>
                 </Drawer>

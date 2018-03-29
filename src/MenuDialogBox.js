@@ -49,6 +49,10 @@ export default class DialogBox extends React.Component{
                     <br/>
                 <a href={Strings_en.REST_BENDIGO_ASSETS_ROADS}>{Strings_en.DATA_NAME_ROADS}</a>
                     <br/>
+                 <a href={Strings_en.REST_BENDIGO_REC_BBQS}>{Strings_en.DATA_NAME_ROADS}</a>
+                    <br/>
+                <a href={Strings_en.REST_BENDIGO_REC_PLAYSPACES}>{Strings_en.DATA_NAME_ROADS}</a>
+                    <br/>
 
                 </Dialog>
             </div>
