@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import                              './App.css';
-import Map                  from './Map.js'
-
+import Map from './Map';
 import MTP                  from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme          from 'material-ui/styles/getMuiTheme'
 import darkBaseTheme          from 'material-ui/styles/baseThemes/darkBaseTheme'
@@ -17,12 +16,13 @@ class App extends Component {
           <MTP>
               <AppBar/>
           </MTP>
-        {/*<p className="App-intro">*/}
-          {/*To get started, edit <code>src/App.js</code> and save to reload. Done!*/}
-        {/*</p>*/}
-        {/*TODO GENERATE MAP PROPERLY*/}
+        <Map
+          googleMapURL= "https://maps.googleapis.com/maps/api/js?key=AIzaSyDEHhw8Prc-TJfTeEFHfuNGw7eEMYGm-6Y"
+          loadingElement= {<div style={{height: '100%'}} />}
+          containerElement= {<div style={{height: '500px'}} />}
+          mapElement= {<div style={{height: '100%'}} />}
+          />
 
-        <Map />
           <footer className="App-footer">
               <MTP muiTheme={getMuiTheme(darkBaseTheme)}>
                 <RaisedLinkButton label={ Strings_en.FOOTER_CREDIT } link={ Strings_en.FOOTER_CREDIT_LINK } />

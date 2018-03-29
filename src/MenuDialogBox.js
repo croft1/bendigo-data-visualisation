@@ -4,8 +4,13 @@ import FlatButton from 'material-ui/FlatButton';
 import * as Strings_en      from './Strings_en';
 import MenuItem from 'material-ui/MenuItem';
 import DataIcon from 'material-ui/svg-icons/file/cloud';
-import Divider from 'material-ui/Divider';
 
+
+const customStyle = {
+    width: '50%',
+    maxWidth: '300px',
+    minWidth: '100px',
+};
 export default class DialogBox extends React.Component{
 
     constructor(props){
@@ -36,6 +41,7 @@ export default class DialogBox extends React.Component{
                 open={this.state.open}
                 onRequestClose={this.handleClose}
                 autoScrollBodyContent={true}
+                contentStyle={customStyle}
                 >
                     {/*make this more reusable and pass in a prop with this info*/}
                 <p>data.gov.au</p>
@@ -43,6 +49,7 @@ export default class DialogBox extends React.Component{
                     <br/>
                 <a href={Strings_en.REST_BENDIGO_ASSETS_ROADS}>{Strings_en.DATA_NAME_ROADS}</a>
                     <br/>
+
                 </Dialog>
             </div>
         )
