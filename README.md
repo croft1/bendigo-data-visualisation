@@ -1,12 +1,12 @@
-#BENDIGO - DATA
+# BENDIGO - DATA
 
 A react web app created my mewc - croft1
 
-##Purpose
+## Purpose
 
 1. Taking open data sources from data.gov.au and visualising it in meaningful ways.
 
-##Outcomes
+## Outcomes
 
 1. Introducing myself to the React framework in an applicable and effective way
 1. Structure the application so its easily extensible for future contributions in the open source community
@@ -14,7 +14,7 @@ A react web app created my mewc - croft1
 
 
 
-#Author
+### Author
 
 github.com/croft1 - mewc.info
 
