@@ -8,7 +8,8 @@ class Map extends Component {
 
 
     componentDidMount() {
-
+        var s = Strings_en.COUNCIL_FULL_NAME;
+        s.toString();
     }
 
 
@@ -19,7 +20,6 @@ class Map extends Component {
 
             <div className='map'>
                 <GoogleMap
-
                     defaultZoom={13}
                     defaultCenter={{lat: -36.751502, lng: 144.282406}}>
                     {this.props.isMarkerShown &&
