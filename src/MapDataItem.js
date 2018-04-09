@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Circle, Polygon, Polyline } from 'react-google-maps'
 import * as Strings_en from './Strings_en';
 
+const DATA_COUNT_LIMIT = 40000;
 //data
  class MapDataItem extends Component {
 
@@ -101,7 +102,7 @@ import * as Strings_en from './Strings_en';
 
     getLine(coordinates){
         var positions = [];
-        for(var point = 0; point < coordinates.length; point++){ //weirdly doesnt get array, point just iterates. tried .map too
+        for(var point = 0; point < coordinates.length || point > DATA_COUNT_LIMIT; point++){ //weirdly doesnt get array, point just iterates. tried .map too
              positions.push(
                  this.getPosition(coordinates[point])
              );

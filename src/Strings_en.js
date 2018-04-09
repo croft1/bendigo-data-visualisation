@@ -8,7 +8,7 @@ export const DATA_NAME_FOOTPATH = "Asset - Footpath";
 export const DATA_NAME_ROADS = "Asset - Roads";
 export const DATA_NAME_TREES = "Asset - Trees";
 export const DATA_NAME_BBQ = "Asset - BBQs";
-export const DATA_NAME_PLAYGROUND = "Asset - Playgrounds";
+export const DATA_NAME_PLAYGROUND = "Asset - Playspots";
 export const DATA_NAME_SOURCES = "Data Sources";
 
 //URLS
@@ -22,3 +22,6 @@ export const REST_BENDIGO_REC_TREES = "https://data.gov.au/geoserver/city-of-gre
 //RAW DL FILE URLS
 export const FILE_BENDIGO_REC_BBQS = "/public/data/bendigo-rec-bbqs.geojson";
 export const FILE_BENDIGO_REC_PLAYSPACES = "/public/data/bendigo-rec-playspaces.geojson";
+
+//MISC
+export const COMING_SOON = "Available Soon!";

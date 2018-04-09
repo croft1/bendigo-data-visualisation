@@ -35,13 +35,13 @@ export default class DialogBox extends React.Component{
                 <MenuItem leftIcon={<DataIcon/>} onClick={this.handleOpen} >{Strings_en.DATA_NAME_SOURCES}</MenuItem>
 
                 <Dialog
-                title={Strings_en.DATA_NAME_SOURCES}
-                actions={actions}
-                modal={false}
-                open={this.state.open}
-                onRequestClose={this.handleClose}
-                autoScrollBodyContent={true}
-                contentStyle={customStyle}
+                    title={Strings_en.DATA_NAME_SOURCES}
+                    actions={actions}
+                    modal={false}
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                    autoScrollBodyContent={true}
+                    contentStyle={customStyle}
                 >
                     {/*make this more reusable and pass in a prop with this info*/}
                 <p>data.gov.au</p>

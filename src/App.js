@@ -15,15 +15,15 @@ class App extends Component {
         super(props);
         document.title = "Bendigo Data Visualiser";
         this.state = {
-            currentEndpoint: Strings_en.REST_BENDIGO_REC_TREES,
-            currentLayerName: Strings_en.DATA_NAME_TREES,
+            currentEndpoint: Strings_en.REST_BENDIGO_ASSETS_FOOTPATHS,
+            currentLayerName: Strings_en.DATA_NAME_FOOTPATH,
             data: []
         };
         this.fetchData(this.state.currentEndpoint);
     }
 
     componentWillMount() {
-        this.setState({data: this.fetchTestData()});
+        // this.setState({data: this.fetchTestData()});
     }
 
     componentDidMount() {
