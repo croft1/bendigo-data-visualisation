@@ -14,16 +14,28 @@ class App extends Component {
     constructor(props) {
         super(props);
         document.title = "Bendigo Data Visualiser";
-
-
+        this.state = {
+            currentEndpoint: Strings_en.REST_BENDIGO_REC_TREES,
+            currentLayerName: Strings_en.DATA_NAME_TREES,
+            data: []
+        };
+        this.fetchData(this.state.currentEndpoint);
     }
 
+    componentWillMount() {
+        this.setState({data: this.fetchTestData()});
+    }
+
+    componentDidMount() {
+    }
 
     render() {
         return (
             <div className="App">
                 <MTP>
-                    <AppBar/>
+                    <AppBar
+                        title={this.state.currentLayerName}
+                    />
                 </MTP>
                 <Map
                     isLayerShown
@@ -32,12 +44,8 @@ class App extends Component {
                     loadingElement={<div style={{height: '100%'}}/>}
                     containerElement={<div style={{height: '100vh'}}/>}
                     mapElement={<div style={{height: '100%'}}/>}
-                    mkrs={this.fetchData(
-                        Strings_en.REST_BENDIGO_REC_PLAYSPACES)
-                    }
-                    layerName={
-                        Strings_en.DATA_NAME_PLAYGROUND
-                    }
+                    mkrs={this.state.data}
+                    layerName={this.state.currentLayerName}
                 />
 
                 <footer className="App-footer">
@@ -50,31 +58,23 @@ class App extends Component {
         );
     }
 
-    componentDidMount() {
-
-
-    }
-
-
-
-    fetchData(url){
+    fetchData(url) {
         var data = "";
         Axios.get(url)
-            .then(function (response) {
-                console.log("fetch " + url + " success");
+            .then(response => {
+                console.log("axiosGet success " + url );
                 data = response.data.features;
-                console.log(data);
+                console.log(data.length);
+                this.setState({data: data});
             })
             .catch(function (error) {
                 console.log(error);
             });
 
-       if(data.length > 1) {
-           return this.fetchTestData();
-       }
-        else{
-           return data;
-       }
+        // if (0) {
+        //     this.setState({data: this.fetchTestData()});
+        //     console.log(this.state.data)
+        // }
     }
 
     fetchTestData() {
@@ -144,8 +144,30 @@ class App extends Component {
                     "suburb": "California Gully",
                     "photo_link": null
                 }
-            }
-            ,
+            },
+            {
+                "type": "Feature",
+                "id": "ckan_1a478d6e_fddd_4d00_a61a_c2d196562db0.2",
+                "geometry": {
+                    "type": "MultiLineString",
+                    "coordinates": [
+                        [
+                        [144.22767241, -36.79921016], [144.22811943, -36.7991468], [144.22818955, -36.79913699]],
+                        [[144.22767241, -36.79921016], [144.22767225, -36.79920953]],
+                        [[144.22767906, -36.79924122], [144.22767241, -36.79921016]],
+                        [[144.22767241, -36.79921016], [144.22762105, -36.79921743]]
+                    ]
+                },
+                "geometry_name": "geom",
+                "properties": {
+                    "assetid": 676199,
+                    "desc": "Ashbourne Way, Kangaroo Flat - Eldridge Court to Wesley Street : Concrete Footpath Standard",
+                    "type": "Concrete Footpath Standard",
+                    "length": 0,
+                    "width": 1.5,
+                    "plan": "GB3756"
+                }
+            },
             {
                 "type": "Feature",
                 "id": "ckan_c2f141ec_a3ac_4b42_a397_ba5ed0c5da46.1", "geometry":

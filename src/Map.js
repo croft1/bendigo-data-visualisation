@@ -14,7 +14,7 @@ class Map extends Component {
 
 
     render() {
-
+        console.log(this.props.mkrs);
 
         return (
 
@@ -22,7 +22,7 @@ class Map extends Component {
                 <GoogleMap
                     defaultZoom={12}
                     defaultCenter={{lat: -36.751502, lng: 144.282406}}>
-                    {this.props.isMarkerShown &&
+                    {this.props.mkrs && this.props.isMarkerShown &&
                     this.props.mkrs.map(mkr => (
                         <MapDataItem
                             isLayerShown

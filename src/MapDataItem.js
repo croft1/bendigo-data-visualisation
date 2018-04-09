@@ -20,6 +20,7 @@ import * as Strings_en from './Strings_en';
 
     buildMapArtifactForDataItem(mkr){
         console.log(mkr.geometry.type);
+        //for 1 [] deep
         if (mkr.geometry.type.localeCompare("Point") === 0) {
             return <Circle
                 center={this.getPosition(mkr.geometry.coordinates)}
@@ -28,7 +29,10 @@ import * as Strings_en from './Strings_en';
                 defaultRadius={20}
             />
         }
-        if(mkr.geometry.type.localeCompare("LineString") === 0 || mkr.geometry.type.localeCompare("Polyline") === 0){
+
+        //for 2 [[]] deep
+        if(mkr.geometry.type.localeCompare("LineString") === 0
+            || mkr.geometry.type.localeCompare("Polyline") === 0){
             var line = <Polyline
                 path={this.getLine(mkr.geometry.coordinates)}
                 options={{
@@ -36,17 +40,21 @@ import * as Strings_en from './Strings_en';
                     strokeOpacity: 1,
                     strokeWeight: 8
                 }}
-                key={mkr.id}
                 label={Strings_en.COUNCIL_FULL_NAME}
 
             />
             return line;
         }
+
+        // for 3 [[[][][]]] deep, need to generate multiple lines for single data set
+        if(mkr.geometry.type.localeCompare("MultiLineString") === 0) {
+            return this.getPolyLines(mkr); //many <PolyLine/> generated from within;
+        }
+
+        //for 4 deep [[[[]]]]
         if(mkr.geometry.type.localeCompare("Polygon") === 0 || mkr.geometry.type.localeCompare("MultiPolygon") === 0){
         var poly = <Polygon
-            path={this.getPoly(mkr.geometry.coordinates)}  //probably need to do an extra layer of processing
-            defaultPath={this.getPoly(mkr.geometry.coordinates)}
-            key={mkr.id}
+            path={this.getPolygon(mkr.geometry.coordinates)}  //probably need to do an extra layer of processing
             label={Strings_en.COUNCIL_FULL_NAME}
             clickable
             options={{
@@ -61,7 +69,7 @@ import * as Strings_en from './Strings_en';
 
     }
 
-    getPoly(coordinates){
+    getPolygon(coordinates){
         var lines = [];
         for(var i = 0; i < coordinates.length; i++){
             lines.push(
@@ -70,6 +78,26 @@ import * as Strings_en from './Strings_en';
         }
         return lines[0];
     }
+
+
+     getPolyLines(mkr){
+         var lines = [];
+         var coordinates = mkr.geometry.coordinates;
+         for(var i = 0; i < coordinates.length; i++){
+             lines.push( <Polyline
+                 path={this.getLine(coordinates[i])}
+                 options={{
+                     strokeColor: '#3202a5',
+                     strokeOpacity: 1,
+                     strokeWeight: 1
+                 }}
+                 key={mkr.id + i}
+                 label={Strings_en.COUNCIL_FULL_NAME}
+             />
+             );
+         }
+         return lines;
+     }
 
     getLine(coordinates){
         var positions = [];
