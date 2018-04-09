@@ -64,7 +64,6 @@ import * as Strings_en from './Strings_en';
     getPoly(coordinates){
         var lines = [];
         for(var i = 0; i < coordinates.length; i++){
-            console.log(coordinates[i])
             lines.push(
                 this.getLine(coordinates[i][0])
             );
@@ -75,7 +74,6 @@ import * as Strings_en from './Strings_en';
     getLine(coordinates){
         var positions = [];
         for(var point = 0; point < coordinates.length; point++){ //weirdly doesnt get array, point just iterates. tried .map too
-            console.log(coordinates.length);
              positions.push(
                  this.getPosition(coordinates[point])
              );

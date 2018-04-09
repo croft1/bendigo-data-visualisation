@@ -4,7 +4,7 @@ import Map from './Map';
 import MTP from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
-
+import Axios from 'axios';
 import AppBar from './AppBar';
 import RaisedLinkButton from './RaisedLinkButton';
 import * as Strings_en from './Strings_en';
@@ -32,9 +32,10 @@ class App extends Component {
                     loadingElement={<div style={{height: '100%'}}/>}
                     containerElement={<div style={{height: '100vh'}}/>}
                     mapElement={<div style={{height: '100%'}}/>}
-                    mkrs={this.fetchData()}
+                    mkrs={this.fetchData(
+                        Strings_en.REST_BENDIGO_REC_PLAYSPACES)
+                    }
                     layerName={
-                        //this needs to be changed when data set buttons are pressed
                         Strings_en.DATA_NAME_PLAYGROUND
                     }
                 />
@@ -56,9 +57,24 @@ class App extends Component {
 
 
 
-    fetchData(){
-        return this.fetchTestData();
+    fetchData(url){
+        var data = "";
+        Axios.get(url)
+            .then(function (response) {
+                console.log("fetch " + url + " success");
+                data = response.data.features;
+                console.log(data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
 
+       if(data.length > 1) {
+           return this.fetchTestData();
+       }
+        else{
+           return data;
+       }
     }
 
     fetchTestData() {
