@@ -9,14 +9,16 @@ import AppBar from './AppBar';
 import RaisedLinkButton from './RaisedLinkButton';
 import * as Strings_en from './Strings_en';
 
+const DATA_COUNT_LIMIT = 10000; //will die at 15000 points
+
 class App extends Component {
 
     constructor(props) {
         super(props);
         document.title = "Bendigo Data Visualiser";
         this.state = {
-            currentEndpoint: Strings_en.REST_BENDIGO_ASSETS_FOOTPATHS,
-            currentLayerName: Strings_en.DATA_NAME_FOOTPATH,
+            currentEndpoint: Strings_en.REST_BENDIGO_REC_TREES,
+            currentLayerName: Strings_en.DATA_NAME_TREES,
             data: []
         };
         this.fetchData(this.state.currentEndpoint);
@@ -39,7 +41,7 @@ class App extends Component {
                 </MTP>
                 <Map
                     isLayerShown
-                    isMarkerShown
+                    visible
                     googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEHhw8Prc-TJfTeEFHfuNGw7eEMYGm-6Y"
                     loadingElement={<div style={{height: '100%'}}/>}
                     containerElement={<div style={{height: '100vh'}}/>}
@@ -64,7 +66,14 @@ class App extends Component {
             .then(response => {
                 console.log("axiosGet success " + url );
                 data = response.data.features;
-                console.log(data.length);
+                if(data.length > DATA_COUNT_LIMIT){
+                    var origLength = data.length;
+                    var shortenedArray = data.splice(0, DATA_COUNT_LIMIT);
+                    console.log("Data length restricted (" + shortenedArray.length + "/" + origLength + "): dataSet too large to display");
+                    data = shortenedArray;
+                }else{
+                    console.log(data.length);
+                }
                 this.setState({data: data});
             })
             .catch(function (error) {

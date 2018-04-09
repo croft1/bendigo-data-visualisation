@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { Circle, Polygon, Polyline } from 'react-google-maps'
 import * as Strings_en from './Strings_en';
 
-const DATA_COUNT_LIMIT = 40000;
 //data
  class MapDataItem extends Component {
 
@@ -14,20 +13,19 @@ const DATA_COUNT_LIMIT = 40000;
 
     render() {
          return this.buildMapArtifactForDataItem(this.props.mkr);
-
     }
 
 
 
     buildMapArtifactForDataItem(mkr){
-        console.log(mkr.geometry.type);
+        // console.log(mkr.geometry.type);
         //for 1 [] deep
         if (mkr.geometry.type.localeCompare("Point") === 0) {
             return <Circle
                 center={this.getPosition(mkr.geometry.coordinates)}
                 label={Strings_en.COUNCIL_FULL_NAME}
                 clickable
-                defaultRadius={20}
+                defaultRadius={3}
             />
         }
 
@@ -102,8 +100,8 @@ const DATA_COUNT_LIMIT = 40000;
 
     getLine(coordinates){
         var positions = [];
-        for(var point = 0; point < coordinates.length || point > DATA_COUNT_LIMIT; point++){ //weirdly doesnt get array, point just iterates. tried .map too
-             positions.push(
+        for(var point = 0; point < coordinates.length ; point++){ //weirdly doesnt get array, point just iterates. tried .map too
+            positions.push(
                  this.getPosition(coordinates[point])
              );
          }

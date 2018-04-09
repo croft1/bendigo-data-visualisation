@@ -1,7 +1,6 @@
 import React from 'react';
 import Snackbar from 'material-ui/Snackbar';
 import MenuItem from 'material-ui/MenuItem';
-import * as Strings_en from "./Strings_en";
 
 export default class MenuItemSnackbar extends React.Component{
 
@@ -12,7 +11,6 @@ export default class MenuItemSnackbar extends React.Component{
 
     handleRequestClose = () => this.setState({open: false});
     handleClick = () => {
-        this.props.onClick
         this.setState({open:true});
     }
 

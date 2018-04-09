@@ -21,7 +21,6 @@ export default class DrawerUndocked extends React.Component{
     handleClose = () => this.setState({open: false});
 
     render(){
-        var comingSoonText
         return(
             <div>
                 <RaisedButton primary={true} className=" b-center" label="Choose Data Set"
