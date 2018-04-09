@@ -11,35 +11,9 @@ import * as Strings_en from './Strings_en';
 
 class App extends Component {
 
-    prepData() {
-        var json = {
-            "features": [
-                {
-                    "type": "Feature",
-                    "id": "ckan_dfcd7012_576e_40ab_825b_67d5140a4e63.1",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            144.25372566,
-                            -36.72930663
-                        ]
-                    },
-                    "geometry_name": "geom",
-                    "properties": {
-                        "assetid": 49010,
-                        "playground": "Truscott Reserve - Playground",
-                        "hierarchy": "District",
-                        "house_no": "5",
-                        "st_name": "Murdock Street",
-                        "suburb": "California Gully",
-                        "photo_link": null
-                    }
-                }
-            ]
-        };
-
-        //TODO - parse this pasted json into an array to put as a prop in map
-
+    constructor(props) {
+        super(props);
+        document.title = "Bendigo Data Visualiser";
     }
 
 
@@ -50,16 +24,17 @@ class App extends Component {
                     <AppBar/>
                 </MTP>
                 <Map
+                    isLayerShown
                     isMarkerShown
                     googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEHhw8Prc-TJfTeEFHfuNGw7eEMYGm-6Y"
                     loadingElement={<div style={{height: '100%'}}/>}
                     containerElement={<div style={{height: '100vh'}}/>}
                     mapElement={<div style={{height: '100%'}}/>}
-                    mkrs={[
-                        {lat: -36.751502, lng: 144.281206, key: '0001'},
-                        {lat: -36.751502, lng: 144.282206, key: '0002'},
-
-                    ]}
+                    mkrs={this.fetchData()}
+                    layerName={
+                        //this needs to be changed when data set buttons are pressed
+                        Strings_en.DATA_NAME_PLAYGROUND
+                    }
                 />
 
                 <footer className="App-footer">
@@ -68,13 +43,84 @@ class App extends Component {
                                           link={Strings_en.FOOTER_CREDIT_LINK}/>
                     </MTP>
                 </footer>
-                </div>
-                );
-                }
+            </div>
+        );
+    }
 
-    componentDidMount(){
-        document.title = "Bendigo Data Visualiser";
-        
+    componentDidMount() {
+
+
+    }
+
+    fetchData() {
+        return [
+            {
+                "type": "Feature",
+                "id": "ckan_dfcd7012_576e_40ab_825b_67d5140a4e63.1",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        144.25372566,
+                        -36.72930663
+                    ]
+                },
+                "geometry_name": "geom",
+                "properties": {
+                    "assetid": 49010,
+                    "playground": "Truscott Reserve - Playground",
+                    "hierarchy": "District",
+                    "house_no": "5",
+                    "st_name": "Murdock Street",
+                    "suburb": "California Gully",
+                    "photo_link": null
+                }
+            },
+            {
+                "type": "Feature",
+                "id": "ckan_dfcd7012_576e_40ab_825b_67d5140a4e63.2",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        144.25178598,
+                        -36.73540441
+                    ]
+                },
+                "geometry_name": "geom",
+                "properties": {
+                    "assetid": 49012,
+                    "playground": "Rose/Barker Streets Playground",
+                    "hierarchy": "Local",
+                    "house_no": "18",
+                    "st_name": "Rose Street",
+                    "suburb": "California Gully",
+                    "photo_link": null
+                }
+            },
+            {
+                "type": "Feature",
+                "id": "ckan_dfcd7012_576e_40ab_825b_67d5140a4e63.3",
+                "geometry": {
+                    "type": "LineString",
+                    "coordinates": [[
+                        144.25178598,
+                        -36.73540441
+                    ], [
+                        144.25178598,
+                        -36.73540441
+                    ]]
+                },
+                "geometry_name": "geom",
+                "properties": {
+                    "assetid": 49012,
+                    "playground": "Rose/Barker Streets Playground",
+                    "hierarchy": "Local",
+                    "house_no": "18",
+                    "st_name": "Rose Street",
+                    "suburb": "California Gully",
+                    "photo_link": null
+                }
+            }
+        ];
     }
 
 }

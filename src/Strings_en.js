@@ -8,6 +8,7 @@ export const DATA_NAME_FOOTPATH = "Asset - Footpath";
 export const DATA_NAME_ROADS = "Asset - Roads";
 export const DATA_NAME_TREES = "Asset - Trees";
 export const DATA_NAME_BBQ = "Asset - BBQs";
+export const DATA_NAME_PLAYGROUND = "Asset - Playgrounds";
 export const DATA_NAME_SOURCES = "Data Sources";
 
 //URLS
@@ -17,4 +18,6 @@ export const REST_BENDIGO_REC_BBQS = "https://data.gov.au/geoserver/city-of-grea
 export const REST_BENDIGO_REC_PLAYSPACES = "https://data.gov.au/geoserver/city-of-greater-bendigo-recreation-playspaces/wfs?request=GetFeature&typeName=ckan_dfcd7012_576e_40ab_825b_67d5140a4e63&outputFormat=json";
 
 
-
+//RAW DL FILE URLS
+export const FILE_BENDIGO_REC_BBQS = "/public/data/bendigo-rec-bbqs.geojson";
+export const FILE_BENDIGO_REC_PLAYSPACES = "/public/data/bendigo-rec-playspaces.geojson";

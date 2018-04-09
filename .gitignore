@@ -6,6 +6,7 @@
 # testing
 /coverage
 public/data/
+src/data
 
 # production
 /build
