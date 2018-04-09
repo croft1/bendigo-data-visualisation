@@ -20,13 +20,15 @@ class Map extends Component {
 
             <div className='map'>
                 <GoogleMap
-                    defaultZoom={13}
+                    defaultZoom={12}
                     defaultCenter={{lat: -36.751502, lng: 144.282406}}>
                     {this.props.isMarkerShown &&
                     this.props.mkrs.map(mkr => (
                         <MapDataItem
                             isLayerShown
+                            isMarkerShown
                             mkr={mkr}
+                            key={mkr.id}
                             layer={this.props.layerName}
                         />
                         ))}

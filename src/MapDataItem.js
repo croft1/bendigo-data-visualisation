@@ -19,56 +19,67 @@ import * as Strings_en from './Strings_en';
 
 
     buildMapArtifactForDataItem(mkr){
-        if (mkr.geometry.type.localeCompare("Point") === 0) {
         console.log(mkr.geometry.type);
+        if (mkr.geometry.type.localeCompare("Point") === 0) {
             return <Circle
                 center={this.getPosition(mkr.geometry.coordinates)}
-                key={mkr.id}
                 label={Strings_en.COUNCIL_FULL_NAME}
                 clickable
                 defaultRadius={20}
             />
         }
         if(mkr.geometry.type.localeCompare("LineString") === 0 || mkr.geometry.type.localeCompare("Polyline") === 0){
-        console.log(mkr.geometry.type);
-            return <Polyline
-                path={[{lat: -36.73540441, lng: 144.25178598},{lat: -36.73590441, lng: 144.25178198}]}
-                defaultPath={[{lat: -36.73540441, lng: 144.25178598},{lat: -36.73590441, lng: 144.25178198}]}
-                // path={this.getPositions(mkr.geometry.coordinates)}
-                // defaultPath={this.getPositions(mkr.geometry.coordinates)}
+            var line = <Polyline
+                path={this.getLine(mkr.geometry.coordinates)}
+                options={{
+                    strokeColor: '#3202a5',
+                    strokeOpacity: 1,
+                    strokeWeight: 8
+                }}
                 key={mkr.id}
                 label={Strings_en.COUNCIL_FULL_NAME}
-                clickable
-                options={{
-                    strokeColor: '#ff2343',
-                    strokeOpacity: '0.0',
-                    strokeWeight: 22
-                }}
-                visible
+
             />
+            return line;
         }
         if(mkr.geometry.type.localeCompare("Polygon") === 0 || mkr.geometry.type.localeCompare("MultiPolygon") === 0){
-        console.log(mkr.geometry.type);
-            return <Polygon
-                path={this.getPositions(mkr.geometry.coordinates)}  //probably need to do an extra layer of processing
-                defaultPath={this.getPositions(mkr.geometry.coordinates)}
-                key={mkr.id}
-                label={Strings_en.COUNCIL_FULL_NAME}
-                clickable
-            />
+        var poly = <Polygon
+            path={this.getPoly(mkr.geometry.coordinates)}  //probably need to do an extra layer of processing
+            defaultPath={this.getPoly(mkr.geometry.coordinates)}
+            key={mkr.id}
+            label={Strings_en.COUNCIL_FULL_NAME}
+            clickable
+            options={{
+                strokeColor: '#3202a5',
+                strokeOpacity: 1,
+                strokeWeight: 4
+            }}
+        />;
+            return poly;
         }
 
 
     }
 
-    getPositions(coordinates){
+    getPoly(coordinates){
+        var lines = [];
+        for(var i = 0; i < coordinates.length; i++){
+            console.log(coordinates[i])
+            lines.push(
+                this.getLine(coordinates[i][0])
+            );
+        }
+        return lines[0];
+    }
+
+    getLine(coordinates){
         var positions = [];
-         for(var point in coordinates){ //weirdly doesnt get array, point just iterates. tried .map too
+        for(var point = 0; point < coordinates.length; point++){ //weirdly doesnt get array, point just iterates. tried .map too
+            console.log(coordinates.length);
              positions.push(
                  this.getPosition(coordinates[point])
              );
          }
-         console.log(positions);
         return positions;
      }
 
