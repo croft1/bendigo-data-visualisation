@@ -24,7 +24,7 @@ class App extends Component {
         document.title = "Bendigo Data Visualiser";
         this.state = {
             currentEndpoint: Strings_en.REST_BENDIGO_REC_PLAYSPACES,
-            currentLayerName: Strings_en.DATA_NAME_PLAYGROUND,
+            currentLayerName: Strings_en.DATA_NAME_PLAYSPACES,
             data: [],
             mapStyle: RetroStyle,
             mapItemColor:  "Maroon"
@@ -40,12 +40,19 @@ class App extends Component {
     componentDidMount() {
     }
 
+    changeDataSet = (name, endpoint) =>{
+        this.setState({
+            currentEndpoint: endpoint,
+            currentLayerName: name,
+        });
+    }
     render() {
         return (
             <div className="App">
                 <MTP>
                     <AppBar
                         title={this.state.currentLayerName}
+                        changeEndpoint={this.changeDataSet}
                     />
                 </MTP>
                 <Map

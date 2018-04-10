@@ -38,7 +38,10 @@ export default class MainAppBar extends React.Component {
                     <img src={BendigoLogo} alt={Strings_en.COUNCIL_FULL_NAME} />
                     </IconButton>
                         }
-                iconElementRight={<Drawer/>}
+                iconElementRight={
+                <Drawer
+                    changeEndpoint={this.props.changeEndpoint}
+                />}
             />
 
         )

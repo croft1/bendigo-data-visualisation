@@ -8,7 +8,7 @@ export const DATA_NAME_FOOTPATH = "Asset - Footpath";
 export const DATA_NAME_ROADS = "Asset - Roads";
 export const DATA_NAME_TREES = "Env - Trees";
 export const DATA_NAME_BBQ = "Rec - BBQs";
-export const DATA_NAME_PLAYGROUND = "Rec - Playspots";
+export const DATA_NAME_PLAYSPACES = "Rec - Playspots";
 export const DATA_NAME_SOURCES = "Data Sources";
 
 //REST ENDPOINT URLS
