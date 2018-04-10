@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Circle, Polygon, Polyline, InfoWindow} from 'react-google-maps'
-import * as Strings_en from './Strings_en';
+import * as Str_en from './Strings_en';
 
 //data
  class MapDataItem extends Component {
@@ -36,7 +36,7 @@ import * as Strings_en from './Strings_en';
         if (mkr.geometry.type.localeCompare("Point") === 0) {
             return <Circle
                 center={this.getPosition(mkr.geometry.coordinates)}
-                label={Strings_en.COUNCIL_FULL_NAME}
+                label={Str_en.COUNCIL_FULL_NAME}
                 clickable
                 defaultRadius={4}
                 options={{strokeColor: this.props.styleColor}}
@@ -61,7 +61,7 @@ import * as Strings_en from './Strings_en';
                     strokeOpacity: 1,
                     strokeWeight: 8
                 }}
-                label={Strings_en.COUNCIL_FULL_NAME}
+                label={Str_en.COUNCIL_FULL_NAME}
 
             />
             return line;
@@ -76,7 +76,7 @@ import * as Strings_en from './Strings_en';
         if(mkr.geometry.type.localeCompare("Polygon") === 0 || mkr.geometry.type.localeCompare("MultiPolygon") === 0){
         var poly = <Polygon
             path={this.getPolygon(mkr.geometry.coordinates)}  //probably need to do an extra layer of processing
-            label={Strings_en.COUNCIL_FULL_NAME}
+            label={Str_en.COUNCIL_FULL_NAME}
             clickable
             options={{
                 strokeColor: this.props.styleColor,
@@ -113,7 +113,7 @@ import * as Strings_en from './Strings_en';
                      strokeWeight: 1
                  }}
                  key={mkr.id + i}
-                 label={Strings_en.COUNCIL_FULL_NAME}
+                 label={Str_en.COUNCIL_FULL_NAME}
              />
              );
          }

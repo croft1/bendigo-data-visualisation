@@ -8,7 +8,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Axios from 'axios';
 import AppBar from './AppBar';
 import FlatLinkButton from './FlatLinkButton';
-import * as Strings_en from './Strings_en';
+import * as Str_en from './Strings_en';
 
 import AubergineStyle from './map_styles/AUBERGINE_CUSTOM_STYLE';
 import DarkStyle from './map_styles/DARK_CUSTOM_STYLE';
@@ -27,8 +27,8 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentEndpoint: Strings_en.REST_BENDIGO_REC_PLAYSPACES,
-            currentLayerName: Strings_en.DATA_NAME_PLAYSPACES,
+            currentEndpoint: Str_en.REST_BENDIGO_REC_PLAYSPACES,
+            currentLayerName: Str_en.NAME_DATA_PLAYSPACES,
             data: [],
             mapStyle: RetroStyle,
             mapItemColor: "Maroon"
@@ -95,33 +95,33 @@ class App extends Component {
                             <RaisedButton onClick={
                                 this.handleStyleSwitch.bind(
                                     this, StdStyle, "Sienna")
-                            } label={Strings_en.MAP_STYLE_NAME_STD}/>
+                            } label={Str_en.MAP_STYLE_NAME_STD}/>
                             <RaisedButton onClick={
                                 this.handleStyleSwitch.bind(
                                     this, RetroStyle, "Maroon")
-                            } label={Strings_en.MAP_STYLE_NAME_RETRO}/>
+                            } label={Str_en.MAP_STYLE_NAME_RETRO}/>
                             <RaisedButton onClick={
                                 this.handleStyleSwitch.bind(
                                     this, NightStyle, "LightSeaGreen")
-                            } label={Strings_en.MAP_STYLE_NAME_NIGHT}/>
+                            } label={Str_en.MAP_STYLE_NAME_NIGHT}/>
                             <RaisedButton onClick={
                                 this.handleStyleSwitch.bind(
                                     this, DarkStyle, "DarkRed")
-                            } label={Strings_en.MAP_STYLE_NAME_DARK}/>
+                            } label={Str_en.MAP_STYLE_NAME_DARK}/>
                             <RaisedButton onClick={
                                 this.handleStyleSwitch.bind(
                                     this, SilverStyle, "Black")
-                            } label={Strings_en.MAP_STYLE_NAME_SILVER}/>
+                            } label={Str_en.MAP_STYLE_NAME_SILVER}/>
                             <RaisedButton onClick={
                                 this.handleStyleSwitch.bind(
                                     this, AubergineStyle, "YellowGreen")
-                            } label={Strings_en.MAP_STYLE_NAME_AUBERGINE}/>
+                            } label={Str_en.MAP_STYLE_NAME_AUBERGINE}/>
 
 
                             <FlatLinkButton
 
-                                label={Strings_en.FOOTER_CREDIT}
-                                              link={Strings_en.FOOTER_CREDIT_LINK}/>
+                                label={Str_en.FOOTER_CREDIT}
+                                              link={Str_en.FOOTER_CREDIT_LINK}/>
                         </MTP>
                     </div>
                 </footer>
