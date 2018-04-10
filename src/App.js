@@ -26,7 +26,6 @@ class App extends Component {
 
     constructor(props) {
         super(props);
-        document.title = "Bendigo Data Visualiser";
         this.state = {
             currentEndpoint: Strings_en.REST_BENDIGO_REC_PLAYSPACES,
             currentLayerName: Strings_en.DATA_NAME_PLAYSPACES,
@@ -35,6 +34,7 @@ class App extends Component {
             mapItemColor: "Maroon"
         };
         this.fetchData(this.state.currentEndpoint);
+        document.title = "Bendigo Data Visualiser " + this.state.currentLayerName;
 
     }
 
@@ -54,12 +54,12 @@ class App extends Component {
             () => {
                 this.fetchData(this.state.currentEndpoint)
                 console.log(this.state.currentLayerName);
+                document.title = "Bendigo Data Visualiser " + this.state.currentLayerName;
             }); //callback
 
     }
 
     handleStyleSwitch = (style, itemColor) => {
-        console.log(itemColor);
         this.setState({
             mapStyle: style,
             mapItemColor: itemColor
