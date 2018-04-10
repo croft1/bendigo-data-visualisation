@@ -8,6 +8,12 @@ import Axios from 'axios';
 import AppBar from './AppBar';
 import RaisedLinkButton from './RaisedLinkButton';
 import * as Strings_en from './Strings_en';
+import AubergineStyle from './map_styles/AUBERGINE_CUSTOM_STYLE';
+import DarkStyle from './map_styles/DARK_CUSTOM_STYLE';
+import NightStyle from './map_styles/NIGHT_CUSTOM_STYLE';
+import RetroStyle from './map_styles/RETRO_CUSTOM_STYLE';
+import SilverStyle from './map_styles/SILVER_CUSTOM_STYLE';
+import StdStyle from './map_styles/STD_CUSTOM_STYLE';
 
 const DATA_COUNT_LIMIT = 10000; //will die at 15000 points
 
@@ -17,11 +23,14 @@ class App extends Component {
         super(props);
         document.title = "Bendigo Data Visualiser";
         this.state = {
-            currentEndpoint: Strings_en.REST_BENDIGO_ASSETS_FOOTPATHS,
-            currentLayerName: Strings_en.DATA_NAME_FOOTPATH,
-            data: []
+            currentEndpoint: Strings_en.REST_BENDIGO_REC_PLAYSPACES,
+            currentLayerName: Strings_en.DATA_NAME_PLAYGROUND,
+            data: [],
+            mapStyle: RetroStyle,
+            mapItemColor:  "Maroon"
         };
         this.fetchData(this.state.currentEndpoint);
+
     }
 
     componentWillMount() {
@@ -48,6 +57,8 @@ class App extends Component {
                     mapElement={<div style={{height: '100%'}}/>}
                     mkrs={this.state.data}
                     layerName={this.state.currentLayerName}
+                    mapStyle={this.state.mapStyle}
+                    mapItemColor={this.state.mapItemColor}
                 />
 
                 <footer className="App-footer">
@@ -84,6 +95,34 @@ class App extends Component {
         //     this.setState({data: this.fetchTestData()});
         //     console.log(this.state.data)
         // }
+    }
+
+    handleMapStyleChange(style){
+
+        this.setState({
+            mapStyle: AubergineStyle,
+            mapItemColor:  "YellowGreen"
+        });
+        this.setState({
+            mapStyle: RetroStyle,
+            mapItemColor:  "Maroon"
+        });
+        this.setState({
+            mapStyle: DarkStyle,
+            mapItemColor:  "DarkRed"
+        });
+        this.setState({
+            mapStyle: NightStyle,
+            mapItemColor:  "LightSeaGreen"
+        });
+        this.setState({
+            mapStyle: SilverStyle,
+            mapItemColor:  "Black"
+        });
+        this.setState({
+            mapStyle: StdStyle,
+            mapItemColor:  "Sienna"
+        });
     }
 
     fetchTestData() {

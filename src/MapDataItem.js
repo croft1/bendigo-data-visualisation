@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Circle, Polygon, Polyline } from 'react-google-maps'
+import { Circle, Polygon, Polyline, InfoWindow} from 'react-google-maps'
 import * as Strings_en from './Strings_en';
 
 //data
@@ -8,6 +8,9 @@ import * as Strings_en from './Strings_en';
 
     constructor(props){
         super(props);
+        this.state = {
+            infoIsOpen: false
+        }
     }
     componentDidMount() {
 
@@ -19,6 +22,13 @@ import * as Strings_en from './Strings_en';
     }
 
 
+     toggleInfoOpen(){
+         console.log(this.props);
+         console.log(this.state);
+         this.setState({
+             infoIsOpen: !this.state.infoIsOpen
+         })
+     }
 
     buildMapArtifactForDataItem(mkr){
         // console.log(mkr.geometry.type);
@@ -28,8 +38,17 @@ import * as Strings_en from './Strings_en';
                 center={this.getPosition(mkr.geometry.coordinates)}
                 label={Strings_en.COUNCIL_FULL_NAME}
                 clickable
-                defaultRadius={3}
-            />
+                defaultRadius={4}
+                options={{strokeColor: this.props.styleColor}}
+                onClick={() => this.toggleInfoOpen()}
+            >
+                <InfoWindow
+                    onCloseClick={() => this.toggleInfoOpen()}
+                    zIndex={9999999999}
+                >
+                    <h1>HELLO</h1>
+                </InfoWindow>
+            </Circle>
         }
 
         //for 2 [[]] deep
@@ -38,7 +57,7 @@ import * as Strings_en from './Strings_en';
             var line = <Polyline
                 path={this.getLine(mkr.geometry.coordinates)}
                 options={{
-                    strokeColor: '#3202a5',
+                    strokeColor: this.props.styleColor,
                     strokeOpacity: 1,
                     strokeWeight: 8
                 }}
@@ -60,7 +79,7 @@ import * as Strings_en from './Strings_en';
             label={Strings_en.COUNCIL_FULL_NAME}
             clickable
             options={{
-                strokeColor: '#3202a5',
+                strokeColor: this.props.styleColor,
                 strokeOpacity: 1,
                 strokeWeight: 4
             }}
@@ -89,7 +108,7 @@ import * as Strings_en from './Strings_en';
              lines.push( <Polyline
                  path={this.getLine(coordinates[i])}
                  options={{
-                     strokeColor: '#3202a5',
+                     strokeColor: this.props.styleColor,
                      strokeOpacity: 1,
                      strokeWeight: 1
                  }}
