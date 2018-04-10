@@ -6,6 +6,9 @@ import * as Strings_en from './Strings_en';
  class MapDataItem extends Component {
 
 
+    constructor(props){
+        super(props);
+    }
     componentDidMount() {
 
     }

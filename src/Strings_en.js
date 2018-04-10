@@ -23,5 +23,18 @@ export const REST_BENDIGO_REC_TREES = "https://data.gov.au/geoserver/city-of-gre
 export const FILE_BENDIGO_REC_BBQS = "/public/data/bendigo-rec-bbqs.geojson";
 export const FILE_BENDIGO_REC_PLAYSPACES = "/public/data/bendigo-rec-playspaces.geojson";
 
+//MAP STYLES
+export const MAP_STYLE_RETRO = "map_styles/RETRO_CUSTOM_STYLE.json";
+export const MAP_STYLE_NIGHT = "map_styles/NIGHT_CUSTOM_STYLE.json";
+export const MAP_STYLE_SILVER = "map_styles/SILVER_CUSTOM_STYLE.json";
+export const MAP_STYLE_STD = "map_styles/STD_CUSTOM_STYLE.json";
+export const MAP_STYLE_DARK = "map_styles/DARK_CUSTOM_STYLE.json";
+export const MAP_STYLE_AUBERGINE = "map_styles/AUBERGINE_CUSTOM_STYLE.json";
+export const MAP_STYLE_NAME_RETRO = "RETRO";
+export const MAP_STYLE_NAME_NIGHT = "NIGHT";
+export const MAP_STYLE_NAME_SILVER = "SILVER";
+export const MAP_STYLE_NAME_STD = "STANDARD";
+export const MAP_STYLE_NAME_DARK = "DARK";
+export const MAP_STYLE_NAME_AUBERGINE = "AUBERGINE";
 //MISC
 export const COMING_SOON = "Available Soon!";
