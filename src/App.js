@@ -15,7 +15,7 @@ import RetroStyle from './map_styles/RETRO_CUSTOM_STYLE';
 import SilverStyle from './map_styles/SILVER_CUSTOM_STYLE';
 import StdStyle from './map_styles/STD_CUSTOM_STYLE';
 
-const DATA_COUNT_LIMIT = 10000; //will die at 15000 points
+const DATA_COUNT_LIMIT = 9000; //will die at 15000 points
 
 class App extends Component {
 
@@ -24,7 +24,7 @@ class App extends Component {
         document.title = "Bendigo Data Visualiser";
         this.state = {
             currentEndpoint: Strings_en.REST_BENDIGO_REC_PLAYSPACES,
-            currentLayerName: Strings_en.DATA_NAME_PLAYGROUND,
+            currentLayerName: Strings_en.DATA_NAME_PLAYSPACES,
             data: [],
             mapStyle: RetroStyle,
             mapItemColor:  "Maroon"
@@ -40,12 +40,25 @@ class App extends Component {
     componentDidMount() {
     }
 
+    changeDataSet = (name, endpoint) =>{
+        console.log(this.state.currentLayerName);
+        this.setState({
+            currentEndpoint: endpoint,
+            currentLayerName: name,
+        },
+            () =>  {
+                this.fetchData(this.state.currentEndpoint)
+                console.log(this.state.currentLayerName);
+            }); //callback
+
+    }
     render() {
         return (
             <div className="App">
                 <MTP>
                     <AppBar
                         title={this.state.currentLayerName}
+                        changeEndpoint={this.changeDataSet}
                     />
                 </MTP>
                 <Map
