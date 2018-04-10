@@ -11,8 +11,9 @@ A react web app created my mewc - croft1
 1. Introducing myself to the React framework in an applicable and effective way
 1. Structure the application so its easily extensible for future contributions in the open source community
 1. Documentation of the app is thorough
+1. Be of use to the City of Greater Bendigo
 
-## Getting started
+## Want to contribute? Getting started:
 
 1. Clone
 1. ```yarn install``` to get packages etc.
@@ -20,7 +21,7 @@ A react web app created my mewc - croft1
 1. localhost:3000 will open automatically to view
 
 
-### Deployment
+### Live Deployment
 
 Heroku: https://bendigo-data-visualisation.herokuapp.com
 

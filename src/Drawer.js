@@ -41,7 +41,7 @@ export default class DrawerUndocked extends React.Component{
     handleToggle = () => this.setState({open: !this.state.open});
     handleClose = () => {
         this.setState({open: false});
-        console.log(this.state);
+        console.log("open:" + this.state);
     }
     handleDataSwap(endpoint, name){
         this.props.changeEndpoint(endpoint, name);
@@ -92,7 +92,7 @@ export default class DrawerUndocked extends React.Component{
                             this, Strings_en.DATA_NAME_TREES, Strings_en.REST_BENDIGO_REC_TREES)}
                               primaryText={Strings_en.DATA_NAME_TREES}  />
 
-                    <MenuItemSnackbar leftIcon={<MapLayerErrorIcon/>} onClick={this.handleClose} text={Strings_en.DATA_NAME_TREES} message={Strings_en.COMING_SOON} />
+                    <MenuItemSnackbar leftIcon={<MapLayerErrorIcon/>} onClick={this.handleClose} text={Strings_en.DATA_NAME_PLN_BMO_BUSHFIRES} message={Strings_en.COMING_SOON} />
 
                     <Divider />
                     <DialogMenuItem/>
