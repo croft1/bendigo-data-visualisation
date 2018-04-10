@@ -48,7 +48,6 @@ export default class DrawerUndocked extends React.Component{
     }
     handleItemClick(name, endpoint){
         this.handleClose;
-        console.log();
         this.handleDataSwap(name, endpoint);
     }
 

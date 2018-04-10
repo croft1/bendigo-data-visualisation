@@ -15,7 +15,7 @@ import RetroStyle from './map_styles/RETRO_CUSTOM_STYLE';
 import SilverStyle from './map_styles/SILVER_CUSTOM_STYLE';
 import StdStyle from './map_styles/STD_CUSTOM_STYLE';
 
-const DATA_COUNT_LIMIT = 10000; //will die at 15000 points
+const DATA_COUNT_LIMIT = 9000; //will die at 15000 points
 
 class App extends Component {
 
@@ -41,10 +41,16 @@ class App extends Component {
     }
 
     changeDataSet = (name, endpoint) =>{
+        console.log(this.state.currentLayerName);
         this.setState({
             currentEndpoint: endpoint,
             currentLayerName: name,
-        });
+        },
+            () =>  {
+                this.fetchData(this.state.currentEndpoint)
+                console.log(this.state.currentLayerName);
+            }); //callback
+
     }
     render() {
         return (
