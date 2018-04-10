@@ -45,13 +45,15 @@ export default class DialogBox extends React.Component{
                 >
                     {/*make this more reusable and pass in a prop with this info*/}
                 <p>data.gov.au</p>
-                <a href={Strings_en.REST_BENDIGO_ASSETS_FOOTPATHS}>{Strings_en.DATA_NAME_FOOTPATH}</a>
+                <a href={Strings_en.DATA_BENDIGO_ASSETS_FOOTPATHS}>{Strings_en.DATA_NAME_FOOTPATH}</a>
                     <br/>
-                <a href={Strings_en.REST_BENDIGO_ASSETS_ROADS}>{Strings_en.DATA_NAME_ROADS}</a>
+                <a href={Strings_en.DATA_BENDIGO_ASSETS_ROADS}>{Strings_en.DATA_NAME_ROADS}</a>
                     <br/>
-                 <a href={Strings_en.REST_BENDIGO_REC_BBQS}>{Strings_en.DATA_NAME_ROADS}</a>
+                <a href={Strings_en.DATA_BENDIGO_REC_BBQS}>{Strings_en.DATA_NAME_BBQ}</a>
                     <br/>
-                <a href={Strings_en.REST_BENDIGO_REC_PLAYSPACES}>{Strings_en.DATA_NAME_ROADS}</a>
+                <a href={Strings_en.DATA_BENDIGO_REC_PLAYSPACES}>{Strings_en.DATA_NAME_PLAYGROUND}</a>
+                    <br/>
+                <a href={Strings_en.DATA_BENDIGO_REC_TREES}>{Strings_en.DATA_NAME_TREES}</a>
                     <br/>
 
                 </Dialog>

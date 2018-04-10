@@ -12,9 +12,19 @@ A react web app created my mewc - croft1
 1. Structure the application so its easily extensible for future contributions in the open source community
 1. Documentation of the app is thorough
 
+## Getting started
 
+1. Clone
+1. ```yarn install``` to get packages etc.
+1. ```yarn start``` to start local dev server
+1. localhost:3000 will open automatically to view
+
+
+### Deployment
+
+Heroku: https://bendigo-data-visualisation.herokuapp.com
 
 ### Author
 
-github.com/croft1 - mewc.info
+github.com/croft1 - http://mewc.info
 
