@@ -13,16 +13,16 @@ import * as Str_en      from './Strings_en';
 
 //these must be at the correct index to each other please
 const sources = [
-    Str_en.NAME_DATA_BBQ,
-    Str_en.NAME_DATA_FOOTPATH,
-    Str_en.NAME_DATA_TREES,
-    Str_en.NAME_DATA_ROADS,
-    Str_en.NAME_DATA_PLAYSPACES
+    Str_en.NAME_DATA_REC_BBQ,
+    Str_en.NAME_DATA_ASSET_FOOTPATH,
+    Str_en.NAME_DATA_ENV_TREES,
+    Str_en.NAME_DATA_ASSET_ROADS,
+    Str_en.NAME_DATA_REC_PLAYSPACES
 ];
 const links = [
     Str_en.REST_BENDIGO_REC_BBQS,
     Str_en.REST_BENDIGO_ASSETS_FOOTPATHS,
-    Str_en.REST_BENDIGO_REC_TREES,
+    Str_en.REST_BENDIGO_ENV_TREES,
     Str_en.REST_BENDIGO_ASSETS_ROADS,
     Str_en.REST_BENDIGO_REC_PLAYSPACES
 ];
@@ -43,11 +43,16 @@ export default class DrawerUndocked extends React.Component{
         this.setState({open: false});
         console.log("open:" + this.state);
     }
+
+    handleToggling(){
+        this.setState({open: !this.state.open})
+        console.log("open:" + this.state);
+    }
     handleDataSwap(endpoint, name){
         this.props.changeEndpoint(endpoint, name);
     }
     handleItemClick(name, endpoint){
-        this.handleClose;
+        this.handleToggling()
         this.handleDataSwap(name, endpoint);
     }
 
@@ -68,43 +73,76 @@ export default class DrawerUndocked extends React.Component{
 
                     <MenuItem leftIcon={<MapLayerIcon/>} onClick={
                         this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_FOOTPATH, Str_en.REST_BENDIGO_ASSETS_FOOTPATHS)}
-                              primaryText={Str_en.NAME_DATA_FOOTPATH}  />
+                            this, Str_en.NAME_DATA_ASSET_FOOTPATH, Str_en.REST_BENDIGO_ASSETS_FOOTPATHS)}
+                              primaryText={Str_en.NAME_FOOTPATH}  />
 
                     <MenuItem leftIcon={<MapLayerIcon/>} onClick={
                         this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_BBQ, Str_en.REST_BENDIGO_REC_BBQS)}
-                              primaryText={Str_en.NAME_DATA_BBQ}  />
+                            this, Str_en.NAME_DATA_REC_BBQ, Str_en.REST_BENDIGO_REC_BBQS)}
+                              primaryText={Str_en.NAME_BBQ}  />
 
                     <MenuItem leftIcon={<MapLayerIcon/>} onClick={
                         this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_PLAYSPACES, Str_en.REST_BENDIGO_REC_PLAYSPACES)}
-                              primaryText={Str_en.NAME_DATA_PLAYSPACES}  />
+                            this, Str_en.NAME_DATA_REC_PLAYSPACES, Str_en.REST_BENDIGO_REC_PLAYSPACES)}
+                              primaryText={Str_en.NAME_PLAYSPACES}  />
 
                     <MenuItem leftIcon={<MapLayerIcon/>} onClick={
                         this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_ROADS, Str_en.REST_BENDIGO_ASSETS_ROADS)}
-                              primaryText={Str_en.NAME_DATA_ROADS}  />
+                            this, Str_en.NAME_DATA_ASSET_PUBLIC_ROADS, Str_en.REST_BENDIGO_ASSETS_PUBLIC_ROADS)}
+                              primaryText={Str_en.NAME_PUBLIC_ROADS}  />
 
                     <MenuItem leftIcon={<MapLayerIcon/>} onClick={
                         this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_TREES, Str_en.REST_BENDIGO_REC_TREES)}
-                              primaryText={Str_en.NAME_DATA_TREES}  />
+                            this, Str_en.NAME_DATA_ASSET_ROADS, Str_en.REST_BENDIGO_ASSETS_ROADS)}
+                              primaryText={Str_en.NAME_ROADS}  />
+
                     <MenuItem leftIcon={<MapLayerIcon/>} onClick={
                         this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_PLN_BMO_BUSHFIRES, Str_en.REST_BENDIGO_PLN_BMO)}
-                              primaryText={Str_en.NAME_DATA_PLN_BMO_BUSHFIRES}  />
+                            this, Str_en.NAME_DATA_ENV_TREES, Str_en.REST_BENDIGO_ENV_TREES)}
+                              primaryText={Str_en.NAME_TREES}  />
                     <MenuItem leftIcon={<MapLayerIcon/>} onClick={
                         this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_PLN_BMO_BUSHFIRES, Str_en.REST_BENDIGO_PLN_BMO)}
-                              primaryText={Str_en.NAME_DATA_PLN_BMO_BUSHFIRES}  />
+                            this, Str_en.NAME_DATA_PLAN_BMO_BUSHFIRES, Str_en.REST_BENDIGO_PLAN_BMO)}
+                              primaryText={Str_en.NAME_BMO_BUSHFIRES}  />
+                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
+                        this.handleItemClick.bind(
+                            this, Str_en.NAME_DATA_ASSET_KERBS, Str_en.REST_BENDIGO_ASSETS_KERBS)}
+                              primaryText={Str_en.NAME_KERBS}  />
                     <MenuItem leftIcon={<MapLayerIcon/>} onClick={
                         this.handleItemClick.bind(
                             this, Str_en.NAME_DATA_ZONE_GARBAGE, Str_en.REST_BENDIGO_ZONE_GARBAGE)}
-                              primaryText={Str_en.NAME_DATA_ZONE_GARBAGE}  />
+                              primaryText={Str_en.NAME_GARBAGE}  />
+                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
+                        this.handleItemClick.bind(
+                            this, Str_en.NAME_DATA_ASSET_PIPES, Str_en.REST_BENDIGO_ASSETS_PIPES)}
+                              primaryText={Str_en.NAME_PIPES}  />
+                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
+                        this.handleItemClick.bind(
+                            this, Str_en.NAME_DATA_ASSET_PITS, Str_en.REST_BENDIGO_ASSETS_PITS)}
+                              primaryText={Str_en.NAME_PITS}  />
+                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
+                        this.handleItemClick.bind(
+                            this, Str_en.NAME_DATA_ZONE_ORGANICS, Str_en.REST_BENDIGO_ZONE_ORGANICS)}
+                              primaryText={Str_en.NAME_ORGANICS}  />
+                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
+                        this.handleItemClick.bind(
+                            this, Str_en.NAME_DATA_ZONE_ROAD_CLOSURES, Str_en.REST_BENDIGO_ZONE_ROAD_CLOSURES)}
+                              primaryText={Str_en.NAME_ROAD_CLOSURES}  />
+                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
+                        this.handleItemClick.bind(
+                            this, Str_en.NAME_DATA_ZONE_FLOOD, Str_en.REST_BENDIGO_ZONE_FLOOD)}
+                              primaryText={Str_en.NAME_ROAD_FLOODS}  />
+                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
+                        this.handleItemClick.bind(
+                            this, Str_en.NAME_DATA_COMM_MACH_ZONE, Str_en.REST_BENDIGO_COMM_MACH_ZONE)}
+                              primaryText={Str_en.NAME_MACH_ZONES}  />
+                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
+                        this.handleItemClick.bind(
+                            this, Str_en.NAME_DATA_COMM_MACH_CENTRE, Str_en.REST_BENDIGO_COMM_MACH_CENTRE)}
+                              primaryText={Str_en.NAME_MACH_CENTRE}  />
 
                     <Divider />
-                    <MenuItemSnackbar leftIcon={<MapLayerErrorIcon/>} onClick={this.handleClose} text={"Link New Data Set"} message={Str_en.COMING_SOON} />
+                    <MenuItemSnackbar leftIcon={<MapLayerErrorIcon/>} onClick={this.handleClose} text={"Link New Set"} message={Str_en.COMING_SOON} />
 
                     <Divider />
                     <DialogMenuItem/>
