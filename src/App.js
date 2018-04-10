@@ -68,26 +68,27 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <MTP>
+                <MTP >
                     <AppBar
                         title={this.state.currentLayerName}
                         changeEndpoint={this.changeDataSet}
+                        backgroundColor={this.state.mapItemColor}
                     />
                 </MTP>
                 <Map
                     isLayerShown
                     visible
                     googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEHhw8Prc-TJfTeEFHfuNGw7eEMYGm-6Y"
-                    loadingElement={<div style={{height: '100%'}}/>}
-                    containerElement={<div style={{height: '100vh'}}/>}
-                    mapElement={<div style={{height: '100%'}}/>}
+                    loadingElement={<div className="map-loading-element"/>}
+                    containerElement={<div className="map-container-element"/>}
+                    mapElement={<div className="map-element"/>}
                     mkrs={this.state.data}
                     layerName={this.state.currentLayerName}
                     mapStyle={this.state.mapStyle}
                     mapItemColor={this.state.mapItemColor}
                 />
 
-                <footer className="App-footer">
+                <footer>
                     <MTP muiTheme={getMuiTheme(darkBaseTheme)}>
                         <span>
                             <StyleIcon className="footerIcon"/>

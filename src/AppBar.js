@@ -8,13 +8,7 @@ import BendigoLogo from './logo_nav.png';
 
 export default class MainAppBar extends React.Component {
 
-    const
-    styles = {
 
-        titls: {
-            cursor: 'pointer',
-        },
-    };
 
     constructor(props) {
         super(props);
@@ -24,6 +18,8 @@ export default class MainAppBar extends React.Component {
                 title: {
                     cursor: 'pointer',
                 },
+                position: 'fixed',
+                backgroundColor: props.backgroundColor,
             }
         };
     }
@@ -41,7 +37,9 @@ export default class MainAppBar extends React.Component {
                 iconElementRight={
                 <Drawer
                     changeEndpoint={this.props.changeEndpoint}
+                    buttonColor={this.props.backgroundColor}
                 />}
+                style={this.state.styles}
             />
 
         )

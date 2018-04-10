@@ -31,10 +31,14 @@ export default class DrawerUndocked extends React.Component{
 
     constructor(props){
         super(props);
-        this.handleItemClick = this.handleItemClick.bind(this)
+        this.handleItemClick = this.handleItemClick.bind(this);
+        console.log(props);
         this.state = {
             open:false,
-            totalActiveDatasets: sourceLinkMap.length
+            totalActiveDatasets: sourceLinkMap.length,
+            styles: {
+                backgroundColor: props.backgroundColor,
+            }
         };
     }
 
@@ -59,8 +63,11 @@ export default class DrawerUndocked extends React.Component{
     render(){
         return(
             <div>
-                <RaisedButton primary={true} className=" b-center" label="Choose Data Set"
-                              onClick={this.handleToggle} />
+                <RaisedButton  className=" b-center" label="Choose Data Set"
+                              onClick={this.handleToggle}
+                              buttonStyle={{backgroundColor: this.props.backgroundColor}}
+                            default={true}
+                />
                 <Drawer
                     docked={false}
                         width={200}
