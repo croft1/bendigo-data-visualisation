@@ -30,7 +30,7 @@ class Map extends Component {
                     options={{
                         "maxZoom":20,
                         "styles":
-                            this.state.mapStyle,
+                            this.props.mapStyle,
                     }}
                 >
                     {this.props.mkrs && this.props.visible &&
@@ -41,7 +41,7 @@ class Map extends Component {
                             mkr={mkr}
                             key={mkr.id}
                             layer={this.props.layerName}
-                            styleColor={this.state.mapItemColor}
+                            styleColor={this.props.mapItemColor}
                         />
                     ))}
                 </GoogleMap>

@@ -4,16 +4,21 @@ import Map from './Map';
 import MTP from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
+import RaisedButton from 'material-ui/RaisedButton';
 import Axios from 'axios';
 import AppBar from './AppBar';
-import RaisedLinkButton from './RaisedLinkButton';
+import FlatLinkButton from './FlatLinkButton';
 import * as Strings_en from './Strings_en';
+
 import AubergineStyle from './map_styles/AUBERGINE_CUSTOM_STYLE';
 import DarkStyle from './map_styles/DARK_CUSTOM_STYLE';
 import NightStyle from './map_styles/NIGHT_CUSTOM_STYLE';
 import RetroStyle from './map_styles/RETRO_CUSTOM_STYLE';
 import SilverStyle from './map_styles/SILVER_CUSTOM_STYLE';
 import StdStyle from './map_styles/STD_CUSTOM_STYLE';
+
+import StyleIcon from 'material-ui/svg-icons/image/style';
+import credit from 'material-ui/svg-icons/image/style';
 
 const DATA_COUNT_LIMIT = 9000; //will die at 15000 points
 
@@ -27,7 +32,7 @@ class App extends Component {
             currentLayerName: Strings_en.DATA_NAME_PLAYSPACES,
             data: [],
             mapStyle: RetroStyle,
-            mapItemColor:  "Maroon"
+            mapItemColor: "Maroon"
         };
         this.fetchData(this.state.currentEndpoint);
 
@@ -40,18 +45,27 @@ class App extends Component {
     componentDidMount() {
     }
 
-    changeDataSet = (name, endpoint) =>{
+    changeDataSet = (name, endpoint) => {
         console.log(this.state.currentLayerName);
         this.setState({
-            currentEndpoint: endpoint,
-            currentLayerName: name,
-        },
-            () =>  {
+                currentEndpoint: endpoint,
+                currentLayerName: name,
+            },
+            () => {
                 this.fetchData(this.state.currentEndpoint)
                 console.log(this.state.currentLayerName);
             }); //callback
 
     }
+
+    handleStyleSwitch = (style, itemColor) => {
+        console.log(itemColor);
+        this.setState({
+            mapStyle: style,
+            mapItemColor: itemColor
+        })
+    }
+
     render() {
         return (
             <div className="App">
@@ -75,10 +89,41 @@ class App extends Component {
                 />
 
                 <footer className="App-footer">
-                    <MTP muiTheme={getMuiTheme(darkBaseTheme)}>
-                        <RaisedLinkButton label={Strings_en.FOOTER_CREDIT}
-                                          link={Strings_en.FOOTER_CREDIT_LINK}/>
-                    </MTP>
+                    <div>
+                        <MTP muiTheme={getMuiTheme(darkBaseTheme)}>
+                            <StyleIcon className="footerIcon"/>
+                            <RaisedButton onClick={
+                                this.handleStyleSwitch.bind(
+                                    this, StdStyle, "Sienna")
+                            } label={Strings_en.MAP_STYLE_NAME_STD}/>
+                            <RaisedButton onClick={
+                                this.handleStyleSwitch.bind(
+                                    this, RetroStyle, "Maroon")
+                            } label={Strings_en.MAP_STYLE_NAME_RETRO}/>
+                            <RaisedButton onClick={
+                                this.handleStyleSwitch.bind(
+                                    this, NightStyle, "LightSeaGreen")
+                            } label={Strings_en.MAP_STYLE_NAME_NIGHT}/>
+                            <RaisedButton onClick={
+                                this.handleStyleSwitch.bind(
+                                    this, DarkStyle, "DarkRed")
+                            } label={Strings_en.MAP_STYLE_NAME_DARK}/>
+                            <RaisedButton onClick={
+                                this.handleStyleSwitch.bind(
+                                    this, SilverStyle, "Black")
+                            } label={Strings_en.MAP_STYLE_NAME_SILVER}/>
+                            <RaisedButton onClick={
+                                this.handleStyleSwitch.bind(
+                                    this, AubergineStyle, "YellowGreen")
+                            } label={Strings_en.MAP_STYLE_NAME_AUBERGINE}/>
+
+
+                            <FlatLinkButton
+
+                                label={Strings_en.FOOTER_CREDIT}
+                                              link={Strings_en.FOOTER_CREDIT_LINK}/>
+                        </MTP>
+                    </div>
                 </footer>
             </div>
         );
@@ -88,14 +133,14 @@ class App extends Component {
         var data = "";
         Axios.get(url)
             .then(response => {
-                console.log("axiosGet success " + url );
+                console.log("axiosGet success " + url);
                 data = response.data.features;
-                if(data.length > DATA_COUNT_LIMIT){
+                if (data.length > DATA_COUNT_LIMIT) {
                     var origLength = data.length;
                     var shortenedArray = data.splice(0, DATA_COUNT_LIMIT);
                     console.log("Data length restricted (" + shortenedArray.length + "/" + origLength + "): dataSet too large to display");
                     data = shortenedArray;
-                }else{
+                } else {
                     console.log(data.length);
                 }
                 this.setState({data: data});
@@ -110,31 +155,31 @@ class App extends Component {
         // }
     }
 
-    handleMapStyleChange(style){
+    handleMapStyleChange(style) {
 
         this.setState({
             mapStyle: AubergineStyle,
-            mapItemColor:  "YellowGreen"
+            mapItemColor: "YellowGreen"
         });
         this.setState({
             mapStyle: RetroStyle,
-            mapItemColor:  "Maroon"
+            mapItemColor: "Maroon"
         });
         this.setState({
             mapStyle: DarkStyle,
-            mapItemColor:  "DarkRed"
+            mapItemColor: "DarkRed"
         });
         this.setState({
             mapStyle: NightStyle,
-            mapItemColor:  "LightSeaGreen"
+            mapItemColor: "LightSeaGreen"
         });
         this.setState({
             mapStyle: SilverStyle,
-            mapItemColor:  "Black"
+            mapItemColor: "Black"
         });
         this.setState({
             mapStyle: StdStyle,
-            mapItemColor:  "Sienna"
+            mapItemColor: "Sienna"
         });
     }
 
@@ -213,7 +258,7 @@ class App extends Component {
                     "type": "MultiLineString",
                     "coordinates": [
                         [
-                        [144.22767241, -36.79921016], [144.22811943, -36.7991468], [144.22818955, -36.79913699]],
+                            [144.22767241, -36.79921016], [144.22811943, -36.7991468], [144.22818955, -36.79913699]],
                         [[144.22767241, -36.79921016], [144.22767225, -36.79920953]],
                         [[144.22767906, -36.79924122], [144.22767241, -36.79921016]],
                         [[144.22767241, -36.79921016], [144.22762105, -36.79921743]]

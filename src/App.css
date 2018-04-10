@@ -61,4 +61,10 @@ header .b-center{
     float:right;
 }
 
+.footerIcon{
+    display:inline;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
 

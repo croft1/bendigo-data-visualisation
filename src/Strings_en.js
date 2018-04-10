@@ -42,7 +42,7 @@ export const MAP_STYLE_AUBERGINE = "map_styles/AUBERGINE_CUSTOM_STYLE.json";
 export const MAP_STYLE_NAME_RETRO = "RETRO";
 export const MAP_STYLE_NAME_NIGHT = "NIGHT";
 export const MAP_STYLE_NAME_SILVER = "SILVER";
-export const MAP_STYLE_NAME_STD = "STANDARD";
+export const MAP_STYLE_NAME_STD = "DEFAULT";
 export const MAP_STYLE_NAME_DARK = "DARK";
 export const MAP_STYLE_NAME_AUBERGINE = "AUBERGINE";
 //MISC
