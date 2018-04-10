@@ -32,12 +32,12 @@ html{
 .App-footer {
   background-color: #222;
   padding:10px;
-  height: 3%;
+  height: 4%;
   color: white;
-  position:absolute;
+  position:sticky;
   bottom:0;
   width: 100%;
-    text-align: center;
+  text-align: center;
 }
 
 footer a{
