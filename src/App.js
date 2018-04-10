@@ -18,7 +18,6 @@ import SilverStyle from './map_styles/SILVER_CUSTOM_STYLE';
 import StdStyle from './map_styles/STD_CUSTOM_STYLE';
 
 import StyleIcon from 'material-ui/svg-icons/image/style';
-import credit from 'material-ui/svg-icons/image/style';
 
 const DATA_COUNT_LIMIT = 9000; //will die at 15000 points
 
@@ -28,7 +27,7 @@ class App extends Component {
         super(props);
         this.state = {
             currentEndpoint: Str_en.REST_BENDIGO_REC_PLAYSPACES,
-            currentLayerName: Str_en.NAME_DATA_PLAYSPACES,
+            currentLayerName: Str_en.NAME_DATA_REC_PLAYSPACES,
             data: [],
             mapStyle: RetroStyle,
             mapItemColor: "Maroon"
@@ -89,8 +88,8 @@ class App extends Component {
                 />
 
                 <footer className="App-footer">
-                    <div>
-                        <MTP muiTheme={getMuiTheme(darkBaseTheme)}>
+                    <MTP muiTheme={getMuiTheme(darkBaseTheme)}>
+                        <span>
                             <StyleIcon className="footerIcon"/>
                             <RaisedButton onClick={
                                 this.handleStyleSwitch.bind(
@@ -121,9 +120,9 @@ class App extends Component {
                             <FlatLinkButton
 
                                 label={Str_en.FOOTER_CREDIT}
-                                              link={Str_en.FOOTER_CREDIT_LINK}/>
-                        </MTP>
-                    </div>
+                                link={Str_en.FOOTER_CREDIT_LINK}/>
+                        </span>
+                    </MTP>
                 </footer>
             </div>
         );

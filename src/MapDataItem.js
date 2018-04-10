@@ -38,7 +38,7 @@ import * as Str_en from './Strings_en';
                 center={this.getPosition(mkr.geometry.coordinates)}
                 label={Str_en.COUNCIL_FULL_NAME}
                 clickable
-                defaultRadius={4}
+                defaultRadius={8}
                 options={{strokeColor: this.props.styleColor}}
                 onClick={() => this.toggleInfoOpen()}
             >

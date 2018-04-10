@@ -31,7 +31,7 @@ export default class MainAppBar extends React.Component {
     render() {
         return (
             <AppBar
-                title={<span style={this.state.styles.title}>{this.props.title + ' | '  + Str_en.COUNCIL_FULL_NAME  }</span>}
+                title={<span style={this.state.styles.title}>{Str_en.COUNCIL_FULL_NAME + ' | '  +  this.props.title   }</span>}
                 onTitleClick={this.handleClick()}
                 iconElementLeft={
                     <IconButton>
