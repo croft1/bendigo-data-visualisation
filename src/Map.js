@@ -22,7 +22,7 @@ class Map extends Component {
     }
 
     render() {
-        console.log(this.props.mkrs[0]);
+        // console.log(this.props.mkrs[0]);
         return (
             <div className='map'>
                 <GoogleMap

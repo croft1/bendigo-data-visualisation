@@ -35,7 +35,6 @@ class MapDataItem extends Component {
     extractProperties(p){
 
         var properties = Object.keys(p).map((key,index)=>{
-            console.log(key + ' ' + p[key]);
             return <p key={index}>{key}:  {p[key]}</p>;
         })
         return properties
