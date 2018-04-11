@@ -19,15 +19,15 @@ import StdStyle from './map_styles/STD_CUSTOM_STYLE';
 
 import StyleIcon from 'material-ui/svg-icons/image/style';
 
-const DATA_COUNT_LIMIT = 9000; //will die at 15000 points
+const DATA_COUNT_LIMIT = 5000; //will die at 15000 points
 
 class App extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            currentEndpoint: Str_en.REST_BENDIGO_REC_PLAYSPACES,
-            currentLayerName: Str_en.NAME_DATA_REC_PLAYSPACES,
+            currentEndpoint: Str_en.REST_BENDIGO_REC_BBQS,
+            currentLayerName: Str_en.NAME_DATA_REC_BBQ,
             data: [],
             mapStyle: RetroStyle,
             mapItemColor: "Maroon"
@@ -106,7 +106,7 @@ class App extends Component {
                             } label={Str_en.MAP_STYLE_NAME_NIGHT}/>
                             <RaisedButton onClick={
                                 this.handleStyleSwitch.bind(
-                                    this, DarkStyle, "DarkRed")
+                                    this, DarkStyle, "Gainsboro")
                             } label={Str_en.MAP_STYLE_NAME_DARK}/>
                             <RaisedButton onClick={
                                 this.handleStyleSwitch.bind(
@@ -138,7 +138,7 @@ class App extends Component {
                 if (data.length > DATA_COUNT_LIMIT) {
                     var origLength = data.length;
                     var shortenedArray = data.splice(0, DATA_COUNT_LIMIT);
-                    console.log("Data length restricted (" + shortenedArray.length + "/" + origLength + "): dataSet too large to display");
+                    console.log("Data length restricted (" + shortenedArray.length + "/" + origLength + "): full dataSet too large so it's been restricted");
                     data = shortenedArray;
                 } else {
                     console.log(data.length);

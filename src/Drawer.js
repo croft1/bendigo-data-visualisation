@@ -78,10 +78,6 @@ export default class DrawerUndocked extends React.Component{
                     </MenuItem>
                     <Divider />
 
-                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
-                        this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_ASSET_FOOTPATH, Str_en.REST_BENDIGO_ASSETS_FOOTPATHS)}
-                              primaryText={Str_en.NAME_FOOTPATH}  />
 
                     <MenuItem leftIcon={<MapLayerIcon/>} onClick={
                         this.handleItemClick.bind(
@@ -93,6 +89,10 @@ export default class DrawerUndocked extends React.Component{
                             this, Str_en.NAME_DATA_REC_PLAYSPACES, Str_en.REST_BENDIGO_REC_PLAYSPACES)}
                               primaryText={Str_en.NAME_PLAYSPACES}  />
 
+                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
+                        this.handleItemClick.bind(
+                            this, Str_en.NAME_DATA_ASSET_FOOTPATH, Str_en.REST_BENDIGO_ASSETS_FOOTPATHS)}
+                              primaryText={Str_en.NAME_FOOTPATH}  />
                     <MenuItem leftIcon={<MapLayerIcon/>} onClick={
                         this.handleItemClick.bind(
                             this, Str_en.NAME_DATA_ASSET_PUBLIC_ROADS, Str_en.REST_BENDIGO_ASSETS_PUBLIC_ROADS)}
