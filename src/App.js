@@ -106,7 +106,7 @@ class App extends Component {
                             } label={Str_en.MAP_STYLE_NAME_NIGHT}/>
                             <RaisedButton onClick={
                                 this.handleStyleSwitch.bind(
-                                    this, DarkStyle, "DarkRed")
+                                    this, DarkStyle, "Gainsboro")
                             } label={Str_en.MAP_STYLE_NAME_DARK}/>
                             <RaisedButton onClick={
                                 this.handleStyleSwitch.bind(
@@ -138,7 +138,7 @@ class App extends Component {
                 if (data.length > DATA_COUNT_LIMIT) {
                     var origLength = data.length;
                     var shortenedArray = data.splice(0, DATA_COUNT_LIMIT);
-                    console.log("Data length restricted (" + shortenedArray.length + "/" + origLength + "): dataSet too large to display");
+                    console.log("Data length restricted (" + shortenedArray.length + "/" + origLength + "): full dataSet too large so it's been restricted");
                     data = shortenedArray;
                 } else {
                     console.log(data.length);

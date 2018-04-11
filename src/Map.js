@@ -11,7 +11,7 @@ class Map extends Component {
         super(props);
         this.state = {
             mapStyle: props.mapStyle,
-            mapItemColor:  props.mapItemColor
+            mapItemColor:  props.mapItemColor,
         }
 
     }
@@ -22,13 +22,15 @@ class Map extends Component {
     }
 
     render() {
+        console.log(this.props.mkrs[0]);
         return (
             <div className='map'>
                 <GoogleMap
                     defaultZoom={12}
                     defaultCenter={{lat: -36.751502, lng: 144.282406}}
                     options={{
-                        "maxZoom":20,
+                        "maxZoom":19,
+                        "minZoom": 10,
                         "streetViewControl": false,
                         "zoomControl": false,
                         "fullscreenControl": false,
@@ -36,6 +38,7 @@ class Map extends Component {
                             this.props.mapStyle,
                     }}
                 >
+
                     {this.props.mkrs && this.props.visible &&
                     this.props.mkrs.map(mkr => (
                         <MapDataItem
@@ -46,7 +49,9 @@ class Map extends Component {
                             layer={this.props.layerName}
                             styleColor={this.props.mapItemColor}
                         />
+
                     ))}
+
                 </GoogleMap>
             </div>
         )
