@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {Marker, Polygon, Polyline, InfoWindow} from 'react-google-maps'
 import DotIcon from './map_styles/marker_dot.svg'
+import InfoIcon from 'material-ui/svg-icons/action/info-outline'
 import * as Str_en from './Strings_en';
 
+import MTP from 'material-ui/styles/MuiThemeProvider';
 //data
 class MapDataItem extends Component {
 
@@ -18,25 +20,37 @@ class MapDataItem extends Component {
 
     }
 
-
     render() {
         return this.genItemForData(this.props.mkr);
     }
 
     handleToggleWindow = () => {
-        console.log("toggle pressed ")
         this.setState({
                 windowOpen: !this.state.windowOpen,
             },
             () => {
-                console.log(this.state.windowOpen)
             });
     }
 
+    extractProperties(p){
+
+        var properties = Object.keys(p).map((key,index)=>{
+            console.log(key + ' ' + p[key]);
+            return <p key={index}>{key}:  {p[key]}</p>;
+        })
+        return properties
+    }
 
     genItemForData(mkr) {
         //for 1 [] deep
         if (mkr.geometry.type.localeCompare("Point") === 0) {
+
+            var dotSVGIcon = <svg fill={this.props.styleColor} height="24" viewBox="0 0 24 24" width="24"
+                                  xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>;
+
             return <Marker
                 position={this.getPosition(mkr.geometry.coordinates)}
                 clickable
@@ -53,12 +67,15 @@ class MapDataItem extends Component {
                     defaultZIndex={1}
                     position={this.getPosition(mkr.geometry.coordinates)}
                 >
-                    <h4>Properties of "{mkr.properties.assetid}"</h4>
+                    <div>
+                        <MTP>
+                            <div>
+                            <InfoIcon/>
+                            </div>
+                        </MTP>
+                        {this.extractProperties(mkr.properties)}
 
-                    {/*{mkr.properties.map(item => (*/}
-                        {/*<p>item</p>*/}
-                    {/*))}*/}
-
+                    </div>
                 </InfoWindow>}
             </Marker>
         }
