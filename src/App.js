@@ -26,8 +26,8 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentEndpoint: Str_en.REST_BENDIGO_REC_PLAYSPACES,
-            currentLayerName: Str_en.NAME_DATA_REC_PLAYSPACES,
+            currentEndpoint: Str_en.REST_BENDIGO_REC_BBQS,
+            currentLayerName: Str_en.NAME_DATA_REC_BBQ,
             data: [],
             mapStyle: RetroStyle,
             mapItemColor: "Maroon"

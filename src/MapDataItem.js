@@ -5,13 +5,14 @@ import * as Str_en from './Strings_en';
 //data
  class MapDataItem extends Component {
 
+     constructor(props){
+         super(props);
+         this.state= {
+             windowOpen: true,
+         }
+         this.handleToggleWindow.bind(this);
+     }
 
-    constructor(props){
-        super(props);
-        this.state = {
-            infoIsOpen: false
-        }
-    }
     componentDidMount() {
 
     }
@@ -21,14 +22,18 @@ import * as Str_en from './Strings_en';
          return this.buildMapArtifactForDataItem(this.props.mkr);
     }
 
-
-     toggleInfoOpen(){
-         console.log(this.props);
-         console.log(this.state);
+     handleToggleWindow = () => {
+         console.log("toggle pressed ")
+         console.log(this.state.windowOpen)
+         console.log(this)
          this.setState({
-             infoIsOpen: !this.state.infoIsOpen
-         })
+             windowOpen: !this.state.windowOpen
+         }), () => {
+             console.log(this.state.windowOpen)
+         };
+         ;
      }
+
 
     buildMapArtifactForDataItem(mkr){
         // console.log(mkr.geometry.type);
@@ -38,16 +43,14 @@ import * as Str_en from './Strings_en';
                 center={this.getPosition(mkr.geometry.coordinates)}
                 label={Str_en.COUNCIL_FULL_NAME}
                 clickable
-                defaultRadius={8}
+                radius={222}
                 options={{strokeColor: this.props.styleColor}}
-                onClick={() => this.toggleInfoOpen()}
+                onClick={() => this.handleToggleWindow()}
             >
-                <InfoWindow
-                    onCloseClick={() => this.toggleInfoOpen()}
-                    zIndex={9999999999}
-                >
+                {this.state.windowOpen && <InfoWindow
+                onCloseClick={() => this.handleToggleWindow()}>
                     <h1>HELLO</h1>
-                </InfoWindow>
+                </InfoWindow> }
             </Circle>
         }
 
