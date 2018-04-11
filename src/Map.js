@@ -29,6 +29,9 @@ class Map extends Component {
                     defaultCenter={{lat: -36.751502, lng: 144.282406}}
                     options={{
                         "maxZoom":20,
+                        "streetViewControl": false,
+                        "zoomControl": false,
+                        "fullscreenControl": false,
                         "styles":
                             this.props.mapStyle,
                     }}
