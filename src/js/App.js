@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './App.css';
+import '../css/App.css';
 import Map from './Map';
 import MTP from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
@@ -10,12 +10,12 @@ import AppBar from './AppBar';
 import FlatLinkButton from './FlatLinkButton';
 import * as Str_en from './Strings_en';
 
-import AubergineStyle from './map_styles/AUBERGINE_CUSTOM_STYLE';
-import DarkStyle from './map_styles/DARK_CUSTOM_STYLE';
-import NightStyle from './map_styles/NIGHT_CUSTOM_STYLE';
-import RetroStyle from './map_styles/RETRO_CUSTOM_STYLE';
-import SilverStyle from './map_styles/SILVER_CUSTOM_STYLE';
-import StdStyle from './map_styles/STD_CUSTOM_STYLE';
+import AubergineStyle from '../map_styles/AUBERGINE_CUSTOM_STYLE';
+import DarkStyle from '../map_styles/DARK_CUSTOM_STYLE';
+import NightStyle from '../map_styles/NIGHT_CUSTOM_STYLE';
+import RetroStyle from '../map_styles/RETRO_CUSTOM_STYLE';
+import SilverStyle from '../map_styles/SILVER_CUSTOM_STYLE';
+import StdStyle from '../map_styles/STD_CUSTOM_STYLE';
 
 import StyleIcon from 'material-ui/svg-icons/image/style';
 

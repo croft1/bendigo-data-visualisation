@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import './Map.css';
+import '../css/Map.css';
 import {withScriptjs, withGoogleMap, GoogleMap} from 'react-google-maps'
 import MapDataItem from './MapDataItem';
-
 
 //data
 class Map extends Component {
@@ -38,7 +37,7 @@ class Map extends Component {
         return {
             mapStyle: nextProps.mapStyle,
             mapItemColor:  nextProps.mapItemColor,
-            oldMapDataItemID: null
+            oldMapDataItemID: prevState.mapStyle === nextProps.mapStyle ? null : prevState.oldMapDataItemID
         };
     }
 
@@ -82,7 +81,6 @@ class Map extends Component {
         )
     }
 }
-
 
 export default Map = withScriptjs(withGoogleMap(Map));
 
