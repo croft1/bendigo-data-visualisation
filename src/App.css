@@ -92,4 +92,9 @@ header .b-center{
     padding: 5px
 }
 
+.overlay{
+    position:relative;
+    z-index: 93939;
+}
+
 

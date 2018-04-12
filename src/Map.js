@@ -22,8 +22,6 @@ class Map extends Component {
 
     }
 
-    componentWillMount(){
-    }
 
     mapCallback = (key) => {
         if(this.state.oldMapDataItemID !== null){
@@ -74,7 +72,6 @@ class Map extends Component {
                             layer={this.props.layerName}
                             styleColor={this.props.mapItemColor}
                         />
-
                     ))}
 
                 </GoogleMap>

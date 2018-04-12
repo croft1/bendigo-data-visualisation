@@ -5,6 +5,8 @@ import MTP from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
 import RaisedButton from 'material-ui/RaisedButton';
+import CircularProgress from 'material-ui/CircularProgress';
+
 import Axios from 'axios';
 import AppBar from './AppBar';
 import FlatLinkButton from './FlatLinkButton';
@@ -35,7 +37,8 @@ class App extends Component {
                 is: false,
                 limit: DATA_COUNT_LIMIT,
                 fullCount: 0
-            }
+            },
+            loading: false,
         };
         this.fetchData(this.state.currentEndpoint);
         document.title = "Bendigo Data Visualiser " + this.state.currentLayerName;
@@ -70,16 +73,60 @@ class App extends Component {
         })
     }
 
+    toggleLoading() {
+        this.setState({
+                loading: !this.state.loading,
+            }
+        )
+    }
+
+    componentDidUpdate(prev) {
+
+    }
+
+    getLoadingComponent(){
+        var overMapLoading = <CircularProgress
+            style={{zIndex: 999999, position: 'absolute', left: 200, top: 240}}
+            color={this.state.mapItemColor}
+            thickness={20}
+            size={150}
+        />;
+        var appBarLoading = <CircularProgress
+            style={{zIndex: 999999, position: 'absolute', left: 20, top: 20}}
+            color="#fff"
+            thickness={8}
+            size={30}
+        />;
+        return appBarLoading
+    }
+
+
     render() {
+        var overMapLoading = <CircularProgress
+            style={{zIndex: 999999, position: 'absolute', left: 200, top: 240}}
+            color={this.state.mapItemColor}
+            thickness={20}
+            size={150}
+        />;
+        var appBarLoading = <CircularProgress
+            style={{zIndex: 999999, position: 'absolute', left: 20, top: 20}}
+            color={this.state.mapItemColor}
+            thickness={3}
+            size={20}
+        />;
+
         return (
             <div className="App">
-                <MTP >
+                <MTP>
                     <AppBar
                         title={this.state.currentLayerName}
                         changeEndpoint={this.changeDataSet}
                         backgroundColor={this.state.mapItemColor}
                         dataRestricted={this.state.dataRestricted}
                     />
+                </MTP>
+                <MTP>
+                    {this.getLoadingComponent()}
                 </MTP>
                 <Map
                     isLayerShown
@@ -92,6 +139,8 @@ class App extends Component {
                     layerName={this.state.currentLayerName}
                     mapStyle={this.state.mapStyle}
                     mapItemColor={this.state.mapItemColor}
+                    loading={this.state.loading}
+                    toggleLoading={this.toggleLoading}
                 />
 
                 <footer>
@@ -139,6 +188,9 @@ class App extends Component {
         var data = "";
         var restricted = false;
         var origLength = 0;
+        this.setState({
+            loading: true,
+        })
         Axios.get(url)
             .then(response => {
                 // console.log("axiosGet success " + url);
