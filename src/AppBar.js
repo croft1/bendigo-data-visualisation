@@ -25,9 +25,9 @@ export default class MainAppBar extends React.Component {
         };
     }
 
-    render() {
-        console.log(this.props.dataRestricted);
 
+
+    render() {
         return (
             <AppBar
                 title={<span
@@ -39,12 +39,13 @@ export default class MainAppBar extends React.Component {
                     </IconButton>
                 }
                 iconElementRight={
-                    <div class="appbar-right-element p5">
+                    <div className="appbar-right-element p5">
                         <IconWithDialog
                             title={'Dataset Restriction'}
                             text={'The full dataSet is too large to display entirely, so the count has been restricted '
                             + "(" + this.props.dataRestricted.limit + "/" + this.props.dataRestricted.fullCount + ")"
                             }
+                            isRestricted={this.props.dataRestricted.is}
                         />
                         <Drawer
 

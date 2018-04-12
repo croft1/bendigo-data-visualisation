@@ -47,12 +47,10 @@ export default class DrawerUndocked extends React.Component{
     handleToggle = () => this.setState({open: !this.state.open});
     handleClose = () => {
         this.setState({open: false});
-        console.log("open:" + this.state);
     }
 
     handleToggling(){
         this.setState({open: !this.state.open})
-        console.log("open:" + this.state);
     }
     handleDataSwap(endpoint, name){
         this.props.changeEndpoint(endpoint, name);

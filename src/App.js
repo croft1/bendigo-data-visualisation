@@ -19,7 +19,7 @@ import StdStyle from './map_styles/STD_CUSTOM_STYLE';
 
 import StyleIcon from 'material-ui/svg-icons/image/style';
 
-const DATA_COUNT_LIMIT = 7000; //will die at 15000 points
+const DATA_COUNT_LIMIT = 5000; //will die at 15000 points
 
 class App extends Component {
 
@@ -138,26 +138,27 @@ class App extends Component {
     fetchData(url) {
         var data = "";
         var restricted = false;
+        var origLength = 0;
         Axios.get(url)
             .then(response => {
-                console.log("axiosGet success " + url);
+                // console.log("axiosGet success " + url);
                 data = response.data.features;
                 if (data.length > this.state.dataRestricted.limit) {
-                    var origLength = data.length;
+                    origLength = data.length;
                     var shortenedArray = data.splice(0, this.state.dataRestricted.limit);
                     console.log("Data length restricted (" + shortenedArray.length + "/" + origLength + "): full dataSet too large so it's been restricted");
                     data = shortenedArray;
                     restricted = true;
 
                 } else {
-                    console.log(data.length);
+                    console.log("Total data size:" + data.length);
                     restricted = false;
                 }
                 this.setState({
                     data: data,
                     dataRestricted: {
                         is: restricted,
-                        fullCount: data.length,
+                        fullCount: origLength,
                         limit: DATA_COUNT_LIMIT
                     }
                 });
