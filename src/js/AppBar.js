@@ -5,7 +5,7 @@ import IconButton from 'material-ui/IconButton';
 import Drawer from './Drawer';
 import IconWithDialog from './IconWithDialog';
 import * as Str_en from './Strings_en';
-import BendigoLogo from './logo_nav.png';
+import BendigoLogo from '../images/logo_nav.png';
 
 
 export default class MainAppBar extends React.Component {

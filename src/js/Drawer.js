@@ -9,7 +9,7 @@ import Divider from 'material-ui/Divider';
 import PersonIcon from 'material-ui/svg-icons/social/person';
 import MapLayerIcon from 'material-ui/svg-icons/maps/layers';
 import MapLayerErrorIcon from 'material-ui/svg-icons/alert/error-outline';
-import logo from './logo.png';
+import logo from '../images/logo.png';
 import DialogMenuItem from './MenuDialogBox';
 import * as Str_en      from './Strings_en';
 
@@ -52,9 +52,11 @@ export default class DrawerUndocked extends React.Component{
     handleToggling(){
         this.setState({open: !this.state.open})
     }
+
     handleDataSwap(endpoint, name){
         this.props.changeEndpoint(endpoint, name);
     }
+
     handleItemClick(name, endpoint){
         this.handleToggling()
         this.handleDataSwap(name, endpoint);

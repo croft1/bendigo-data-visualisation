@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import {Marker, Polygon, Polyline, InfoWindow} from 'react-google-maps'
-import DotIcon from './map_styles/marker_dot.svg'
 import InfoIcon from 'material-ui/svg-icons/action/info-outline'
 import * as Str_en from './Strings_en';
-
 import MTP from 'material-ui/styles/MuiThemeProvider';
+
 //data
 class MapDataItem extends Component {
 
@@ -30,11 +29,10 @@ class MapDataItem extends Component {
                 windowOpen: !this.state.windowOpen,
             },
             () => {
-                if(this.state.windowOpen === true)
-                {
+                if (this.state.windowOpen === true) {
                     this.props.mapCallback(this.props.itemID);
                 }
-                else{
+                else {
                     this.props.mapCallback(null);
                 }
             });
@@ -43,36 +41,41 @@ class MapDataItem extends Component {
     hideWindow = () => {
         console.log(this.props);
         this.setState({
-                windowOpen: false,
-            }, () => { });
+            windowOpen: false,
+        }, () => {
+        });
     };
 
-    extractProperties(p){
+    extractProperties(p) {
 
-        var properties = Object.keys(p).map((key,index)=>{
-            return <p key={index}>{key}:  {p[key]}</p>;
+        var properties = Object.keys(p).map((key, index) => {
+            return <p key={index}>{key}: {p[key]}</p>;
         });
         return properties
     }
 
     genItemForData(mkr) {
+
         //for 1 [] deep
         if (mkr.geometry.type.localeCompare("Point") === 0) {
 
-            var dotSVGIcon = <svg fill={this.props.styleColor} height="24" viewBox="0 0 24 24" width="24"
-                                  xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M0 0h24v24H0z" fill="none"/>
-            </svg>;
+            var iconSymbol = {
+                path: this.createSVGCircle(12, 12, 4),
+                strokeWeight: 0,
+                fillColor: this.props.styleColor,
+                fillOpacity: 1
+            };
 
             return <Marker
                 position={this.getPosition(mkr.geometry.coordinates)}
                 clickable
                 options={{strokeColor: this.props.styleColor}}
                 onClick={() => this.handleToggleWindow()}
-                icon={{
-                    url: DotIcon
-                }}
+                icon={
+                    // url: DotIcon,
+                    iconSymbol
+                }
+                s
             >
                 {this.state.windowOpen &&
                 <InfoWindow
@@ -84,7 +87,7 @@ class MapDataItem extends Component {
                     <div>
                         <MTP>
                             <div>
-                            <InfoIcon/>
+                                <InfoIcon/>
                             </div>
                         </MTP>
                         {this.extractProperties(mkr.properties)}
@@ -129,8 +132,6 @@ class MapDataItem extends Component {
             />;
             return poly;
         }
-
-
     }
 
     getPolyLines(mkr) {
@@ -182,6 +183,10 @@ class MapDataItem extends Component {
 
     getLng(coords) {
         return coords[0];
+    }
+
+    createSVGCircle(cx, cy, r) {
+        return 'M ' + cx + ', ' + cy + ' m ' + r * -1 + ', 0 a ' + r + ', ' + r + ' 0 1, 0 ' + r * 2 + ', 0 a ' + r + ', ' + r + ' 0 1, 0 ' + r * -2 + ', 0'
     }
 }
 
