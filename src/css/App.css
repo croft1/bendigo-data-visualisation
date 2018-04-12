@@ -80,4 +80,16 @@ header .b-center{
     height: 100%;
 }
 
+.inline{
+    display:inline;
+}
+
+.appbar-right-element{
+
+}
+
+.p5{
+    padding: 5px
+}
+
 

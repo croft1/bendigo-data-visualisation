@@ -2,9 +2,11 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import Subheader from 'material-ui/Subheader';
 import MenuItemSnackbar from './MenuItemSnackbar';
 import Divider from 'material-ui/Divider';
 
+import PersonIcon from 'material-ui/svg-icons/social/person';
 import MapLayerIcon from 'material-ui/svg-icons/maps/layers';
 import MapLayerErrorIcon from 'material-ui/svg-icons/alert/error-outline';
 import logo from '../images/logo.png';
@@ -45,12 +47,10 @@ export default class DrawerUndocked extends React.Component{
     handleToggle = () => this.setState({open: !this.state.open});
     handleClose = () => {
         this.setState({open: false});
-        console.log("open:" + this.state);
     }
 
     handleToggling(){
         this.setState({open: !this.state.open})
-        console.log("open:" + this.state);
     }
 
     handleDataSwap(endpoint, name){
@@ -79,7 +79,7 @@ export default class DrawerUndocked extends React.Component{
                         <img src={logo} alt={Str_en.COUNCIL_FULL_NAME}/>
                     </MenuItem>
                     <Divider />
-
+                    <Subheader>Data Sets</Subheader>
 
                     <MenuItem leftIcon={<MapLayerIcon/>} onClick={
                         this.handleItemClick.bind(
@@ -151,10 +151,13 @@ export default class DrawerUndocked extends React.Component{
                               primaryText={Str_en.NAME_MACH_CENTRE}  />
 
                     <Divider />
+                    <Subheader>New Features</Subheader>
                     <MenuItemSnackbar leftIcon={<MapLayerErrorIcon/>} onClick={this.handleClose} text={"Link New Set"} message={Str_en.COMING_SOON} />
 
                     <Divider />
+                    <Subheader>Credits</Subheader>
                     <DialogMenuItem/>
+                    <MenuItem leftIcon={<PersonIcon/>}  primaryText="mewc 2018"  />
                 </Drawer>
             </div>
         )
