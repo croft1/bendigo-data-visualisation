@@ -19,7 +19,7 @@ import StdStyle from './map_styles/STD_CUSTOM_STYLE';
 
 import StyleIcon from 'material-ui/svg-icons/image/style';
 
-const DATA_COUNT_LIMIT = 7000; //will die at 15000 points
+const DATA_COUNT_LIMIT = 5000; //will die at 15000 points
 
 class App extends Component {
 
@@ -30,7 +30,12 @@ class App extends Component {
             currentLayerName: Str_en.NAME_DATA_REC_BBQ,
             data: [],
             mapStyle: RetroStyle,
-            mapItemColor: "Maroon"
+            mapItemColor: "Maroon",
+            dataRestricted: {
+                is: false,
+                limit: DATA_COUNT_LIMIT,
+                fullCount: 0
+            }
         };
         this.fetchData(this.state.currentEndpoint);
         document.title = "Bendigo Data Visualiser " + this.state.currentLayerName;
@@ -73,6 +78,7 @@ class App extends Component {
                         title={this.state.currentLayerName}
                         changeEndpoint={this.changeDataSet}
                         backgroundColor={this.state.mapItemColor}
+                        dataRestricted={this.state.dataRestricted}
                     />
                 </MTP>
                 <Map
@@ -131,56 +137,35 @@ class App extends Component {
 
     fetchData(url) {
         var data = "";
+        var restricted = false;
+        var origLength = 0;
         Axios.get(url)
             .then(response => {
-                console.log("axiosGet success " + url);
+                // console.log("axiosGet success " + url);
                 data = response.data.features;
-                if (data.length > DATA_COUNT_LIMIT) {
-                    var origLength = data.length;
-                    var shortenedArray = data.splice(0, DATA_COUNT_LIMIT);
+                if (data.length > this.state.dataRestricted.limit) {
+                    origLength = data.length;
+                    var shortenedArray = data.splice(0, this.state.dataRestricted.limit);
                     console.log("Data length restricted (" + shortenedArray.length + "/" + origLength + "): full dataSet too large so it's been restricted");
                     data = shortenedArray;
+                    restricted = true;
+
                 } else {
-                    console.log(data.length);
+                    console.log("Total data size:" + data.length);
+                    restricted = false;
                 }
-                this.setState({data: data});
+                this.setState({
+                    data: data,
+                    dataRestricted: {
+                        is: restricted,
+                        fullCount: origLength,
+                        limit: DATA_COUNT_LIMIT
+                    }
+                });
             })
             .catch(function (error) {
                 console.log(error);
             });
-
-        // if (0) {
-        //     this.setState({data: this.fetchTestData()});
-        //     console.log(this.state.data)
-        // }
-    }
-
-    handleMapStyleChange(style) {
-
-        this.setState({
-            mapStyle: AubergineStyle,
-            mapItemColor: "YellowGreen"
-        });
-        this.setState({
-            mapStyle: RetroStyle,
-            mapItemColor: "Maroon"
-        });
-        this.setState({
-            mapStyle: DarkStyle,
-            mapItemColor: "DarkRed"
-        });
-        this.setState({
-            mapStyle: NightStyle,
-            mapItemColor: "LightSeaGreen"
-        });
-        this.setState({
-            mapStyle: SilverStyle,
-            mapItemColor: "Black"
-        });
-        this.setState({
-            mapStyle: StdStyle,
-            mapItemColor: "Sienna"
-        });
     }
 
     fetchTestData() {
