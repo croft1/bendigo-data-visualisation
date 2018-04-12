@@ -12,7 +12,7 @@ class MapDataItem extends Component {
         super(props);
         this.state = {
             windowOpen: false,
-        }
+        };
         this.handleToggleWindow.bind(this);
     }
 
@@ -25,18 +25,33 @@ class MapDataItem extends Component {
     }
 
     handleToggleWindow = () => {
+        console.log(this.props);
         this.setState({
                 windowOpen: !this.state.windowOpen,
             },
             () => {
+                if(this.state.windowOpen === true)
+                {
+                    this.props.mapCallback(this.props.itemID);
+                }
+                else{
+                    this.props.mapCallback(null);
+                }
             });
-    }
+    };
+
+    hideWindow = () => {
+        console.log(this.props);
+        this.setState({
+                windowOpen: false,
+            }, () => { });
+    };
 
     extractProperties(p){
 
         var properties = Object.keys(p).map((key,index)=>{
             return <p key={index}>{key}:  {p[key]}</p>;
-        })
+        });
         return properties
     }
 
