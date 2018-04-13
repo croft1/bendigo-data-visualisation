@@ -21,8 +21,6 @@ class Map extends Component {
 
     }
 
-    componentWillMount(){
-    }
 
     mapCallback = (key) => {
         if(this.state.oldMapDataItemID !== null){
@@ -72,6 +70,7 @@ class Map extends Component {
                             mapCallback={this.mapCallback}
                             layer={this.props.layerName}
                             styleColor={this.props.mapItemColor}
+                            mkrIcon={this.createSVGCircle(8,8,4)}
                         />
 
                     ))}
@@ -79,6 +78,9 @@ class Map extends Component {
                 </GoogleMap>
             </div>
         )
+    }
+    createSVGCircle(cx, cy, r) {
+        return 'M ' + cx + ', ' + cy + ' m ' + r * -1 + ', 0 a ' + r + ', ' + r + ' 0 1, 0 ' + r * 2 + ', 0 a ' + r + ', ' + r + ' 0 1, 0 ' + r * -2 + ', 0'
     }
 }
 

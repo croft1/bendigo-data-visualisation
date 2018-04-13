@@ -60,7 +60,7 @@ class MapDataItem extends Component {
         if (mkr.geometry.type.localeCompare("Point") === 0) {
 
             var iconSymbol = {
-                path: this.createSVGCircle(12, 12, 4),
+                path: this.props.mkrIcon,
                 strokeWeight: 0,
                 fillColor: this.props.styleColor,
                 fillOpacity: 1
@@ -75,7 +75,6 @@ class MapDataItem extends Component {
                     // url: DotIcon,
                     iconSymbol
                 }
-                s
             >
                 {this.state.windowOpen &&
                 <InfoWindow
@@ -185,9 +184,6 @@ class MapDataItem extends Component {
         return coords[0];
     }
 
-    createSVGCircle(cx, cy, r) {
-        return 'M ' + cx + ', ' + cy + ' m ' + r * -1 + ', 0 a ' + r + ', ' + r + ' 0 1, 0 ' + r * 2 + ', 0 a ' + r + ', ' + r + ' 0 1, 0 ' + r * -2 + ', 0'
-    }
 }
 
 export default MapDataItem;
