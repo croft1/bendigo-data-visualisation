@@ -14,21 +14,65 @@ import DialogMenuItem from './MenuDialogBox';
 import * as Str_en      from './Strings_en';
 
 //these must be at the correct index to each other please
+const names = [
+  Str_en.NAME_BBQ,
+  Str_en.NAME_FOOTPATH,
+  Str_en.NAME_TREES,
+  Str_en.NAME_ROADS,
+  Str_en.NAME_PLAYSPACES,
+  Str_en.NAME_BMO_BUSHFIRES,
+  Str_en.NAME_ORGANICS,
+  Str_en.NAME_GARBAGE,
+  Str_en.NAME_ROAD_FLOODS,
+  Str_en.NAME_ROAD_CLOSURES,
+  Str_en.NAME_PUBLIC_ROADS,
+  Str_en.NAME_PITS,
+  Str_en.NAME_PIPES,
+  Str_en.NAME_MACH_ZONES,
+  Str_en.NAME_MACH_CENTRE
+];
 const sources = [
     Str_en.NAME_DATA_REC_BBQ,
     Str_en.NAME_DATA_ASSET_FOOTPATH,
     Str_en.NAME_DATA_ENV_TREES,
     Str_en.NAME_DATA_ASSET_ROADS,
-    Str_en.NAME_DATA_REC_PLAYSPACES
+    Str_en.NAME_DATA_REC_PLAYSPACES,
+    Str_en.NAME_DATA_PLAN_BMO_BUSHFIRES,
+    Str_en.NAME_DATA_ZONE_ORGANICS,
+    Str_en.NAME_DATA_ZONE_GARBAGE,
+    Str_en.NAME_DATA_ZONE_FLOOD,
+    Str_en.NAME_DATA_ZONE_ROAD_CLOSURES,
+    Str_en.NAME_DATA_ASSET_PUBLIC_ROADS,
+    Str_en.NAME_DATA_ASSET_PITS,
+    Str_en.NAME_DATA_ASSET_PIPES,
+    Str_en.NAME_DATA_COMM_MACH_ZONE,
+    Str_en.NAME_DATA_COMM_MACH_CENTRE
+
 ];
 const links = [
     Str_en.REST_BENDIGO_REC_BBQS,
     Str_en.REST_BENDIGO_ASSETS_FOOTPATHS,
     Str_en.REST_BENDIGO_ENV_TREES,
     Str_en.REST_BENDIGO_ASSETS_ROADS,
-    Str_en.REST_BENDIGO_REC_PLAYSPACES
+    Str_en.REST_BENDIGO_REC_PLAYSPACES,
+    Str_en.REST_BENDIGO_PLAN_BMO,
+    Str_en.REST_BENDIGO_ZONE_ORGANICS,
+    Str_en.REST_BENDIGO_ZONE_GARBAGE,
+    Str_en.REST_BENDIGO_ZONE_FLOOD,
+    Str_en.REST_BENDIGO_ZONE_ROAD_CLOSURES,
+    Str_en.REST_BENDIGO_ASSETS_PUBLIC_ROADS,
+    Str_en.REST_BENDIGO_ASSETS_PITS,
+    Str_en.REST_BENDIGO_ASSETS_PIPES,
+    Str_en.REST_BENDIGO_COMM_MACH_ZONE,
+    Str_en.REST_BENDIGO_COMM_MACH_CENTRE,
 ];
-const sourceLinkMap = sources.map((sources) => links); //use a js object instead...if ceebs
+
+const sourceLinkMap = sources.map((source, i) => ({
+  'title': names[i],
+  'endpoint': links[i],
+  'source': source
+}));
+
 export default class DrawerUndocked extends React.Component{
 
     constructor(props){
@@ -81,74 +125,12 @@ export default class DrawerUndocked extends React.Component{
                     <Divider />
                     <Subheader>Data Sets</Subheader>
 
-                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
+                    {sourceLinkMap.map((item) => (
+                      <MenuItem leftIcon={<MapLayerIcon/>} key={item.title} onClick={
                         this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_REC_BBQ, Str_en.REST_BENDIGO_REC_BBQS)}
-                              primaryText={Str_en.NAME_BBQ}  />
-
-                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
-                        this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_REC_PLAYSPACES, Str_en.REST_BENDIGO_REC_PLAYSPACES)}
-                              primaryText={Str_en.NAME_PLAYSPACES}  />
-
-                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
-                        this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_ASSET_FOOTPATH, Str_en.REST_BENDIGO_ASSETS_FOOTPATHS)}
-                              primaryText={Str_en.NAME_FOOTPATH}  />
-                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
-                        this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_ASSET_PUBLIC_ROADS, Str_en.REST_BENDIGO_ASSETS_PUBLIC_ROADS)}
-                              primaryText={Str_en.NAME_PUBLIC_ROADS}  />
-
-                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
-                        this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_ASSET_ROADS, Str_en.REST_BENDIGO_ASSETS_ROADS)}
-                              primaryText={Str_en.NAME_ROADS}  />
-
-                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
-                        this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_ENV_TREES, Str_en.REST_BENDIGO_ENV_TREES)}
-                              primaryText={Str_en.NAME_TREES}  />
-                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
-                        this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_PLAN_BMO_BUSHFIRES, Str_en.REST_BENDIGO_PLAN_BMO)}
-                              primaryText={Str_en.NAME_BMO_BUSHFIRES}  />
-                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
-                        this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_ASSET_KERBS, Str_en.REST_BENDIGO_ASSETS_KERBS)}
-                              primaryText={Str_en.NAME_KERBS}  />
-                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
-                        this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_ZONE_GARBAGE, Str_en.REST_BENDIGO_ZONE_GARBAGE)}
-                              primaryText={Str_en.NAME_GARBAGE}  />
-                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
-                        this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_ASSET_PIPES, Str_en.REST_BENDIGO_ASSETS_PIPES)}
-                              primaryText={Str_en.NAME_PIPES}  />
-                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
-                        this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_ASSET_PITS, Str_en.REST_BENDIGO_ASSETS_PITS)}
-                              primaryText={Str_en.NAME_PITS}  />
-                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
-                        this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_ZONE_ORGANICS, Str_en.REST_BENDIGO_ZONE_ORGANICS)}
-                              primaryText={Str_en.NAME_ORGANICS}  />
-                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
-                        this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_ZONE_ROAD_CLOSURES, Str_en.REST_BENDIGO_ZONE_ROAD_CLOSURES)}
-                              primaryText={Str_en.NAME_ROAD_CLOSURES}  />
-                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
-                        this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_ZONE_FLOOD, Str_en.REST_BENDIGO_ZONE_FLOOD)}
-                              primaryText={Str_en.NAME_ROAD_FLOODS}  />
-                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
-                        this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_COMM_MACH_ZONE, Str_en.REST_BENDIGO_COMM_MACH_ZONE)}
-                              primaryText={Str_en.NAME_MACH_ZONES}  />
-                    <MenuItem leftIcon={<MapLayerIcon/>} onClick={
-                        this.handleItemClick.bind(
-                            this, Str_en.NAME_DATA_COMM_MACH_CENTRE, Str_en.REST_BENDIGO_COMM_MACH_CENTRE)}
-                              primaryText={Str_en.NAME_MACH_CENTRE}  />
+                          this, item.source, item.endpoint)}
+                          primaryText={item.title}  />
+                     ))};
 
                     <Divider />
                     <Subheader>New Features</Subheader>
@@ -163,4 +145,3 @@ export default class DrawerUndocked extends React.Component{
         )
     }
 }
-
